@@ -1,0 +1,25 @@
+/* Landing-page visual theme derived from the supplied Figma reference. */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Nunito:wght@400;500;600;700;800;900&display=swap');
+:root{--pc-cream:#faf6f0;--pc-paper:#fffdf9;--pc-ink:#1a1209;--pc-teal:#1d6b6b;--pc-coral:#e8542a;--pc-gold:#f5a623;--pc-lilac:#b794c8;--pc-line:#d9d0c7}
+body{font-family:'Nunito',sans-serif!important;background:var(--pc-cream)!important;color:var(--pc-ink)!important}
+.landing-shell{background:var(--pc-cream)!important}
+.site-nav{position:sticky!important;top:0;z-index:50;background:rgba(250,246,240,.96)!important;border-bottom:2px solid var(--pc-ink)!important;box-shadow:none!important;backdrop-filter:blur(10px)}
+.site-nav::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:repeating-linear-gradient(90deg,var(--pc-coral) 0 20px,var(--pc-gold) 20px 40px,var(--pc-teal) 40px 60px,var(--pc-lilac) 60px 80px)}
+.brand strong,.hero-copy h1,.section-copy h2,.workflow-inner h2,.closing-section h2,.order-card h3,.feature-card h3{font-family:'Fraunces',serif!important;color:var(--pc-ink)!important}
+.brand img{border:2px solid var(--pc-ink)!important;box-shadow:2px 2px 0 var(--pc-ink)!important;background:#fff!important}
+.nav-links a{color:var(--pc-ink)!important;font-weight:800!important}.nav-links a:hover{color:var(--pc-teal)!important}
+.portal-links a{border:2px solid var(--pc-ink)!important;border-radius:8px!important;background:#fff!important;color:var(--pc-ink)!important;box-shadow:2px 2px 0 var(--pc-ink)!important;font-weight:900!important}
+.portal-links a:last-child{background:var(--pc-coral)!important;color:#fff!important}
+.customer-login-link{background:#fff!important}.customer-logout-link{background:#fdeee8!important;color:#8b341c!important}
+.hero-section{background:var(--pc-cream)!important}
+.hero-card,.service-strip,.order-card,.feature-card,.workflow-inner,.closing-section{border:2px solid var(--pc-ink)!important;border-radius:14px!important;box-shadow:4px 4px 0 var(--pc-ink)!important;background:var(--pc-paper)!important}
+.hero-card{position:relative;overflow:hidden}.hero-card::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:repeating-linear-gradient(90deg,var(--pc-coral) 0 24px,var(--pc-gold) 24px 48px,var(--pc-teal) 48px 72px,var(--pc-lilac) 72px 96px)}
+.hero-topline img{border:2px solid var(--pc-ink)!important;border-radius:12px!important;box-shadow:3px 3px 0 var(--pc-ink)!important;background:#fff!important}
+.eyebrow{color:var(--pc-teal)!important;font-weight:900!important}.intro,.order-card p,.feature-card p,.closing-section p{color:#62574d!important}
+.service-strip article{border-color:var(--pc-line)!important}.service-strip article span{background:#e0f2f2!important;border:1.5px solid var(--pc-teal)!important;color:var(--pc-teal)!important}
+.order-card:nth-child(1){background:#fdeee8!important}.order-card:nth-child(2){background:#e0f2f2!important}.feature-card:nth-child(1){background:#fef6e4!important}.feature-card:nth-child(2){background:#f5eefb!important}.feature-card:nth-child(3){background:#edf6ed!important}
+.workflow-inner{background:var(--pc-teal)!important;color:#fff!important}.workflow-inner h2,.workflow-inner strong{color:#fff!important}.workflow-row{border-color:rgba(255,255,255,.32)!important}
+.contact-info article{border:2px solid var(--pc-ink)!important;border-radius:10px!important;background:#fff!important;box-shadow:2px 2px 0 var(--pc-ink)!important}
+.floating-order-button{background:var(--pc-coral)!important;color:#fff!important;border:2px solid var(--pc-ink)!important;border-radius:10px!important;box-shadow:4px 4px 0 var(--pc-ink)!important;font-weight:900!important}
+.site-footer{background:var(--pc-ink)!important;color:var(--pc-cream)!important;border-top:0!important}
+@media(max-width:760px){.site-nav{border-radius:0!important}.portal-links a{box-shadow:1px 1px 0 var(--pc-ink)!important}.hero-card,.service-strip,.order-card,.feature-card,.workflow-inner,.closing-section{box-shadow:3px 3px 0 var(--pc-ink)!important}}

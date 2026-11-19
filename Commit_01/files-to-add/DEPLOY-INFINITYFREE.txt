@@ -1,0 +1,82 @@
+BRILLE AMOUR - INFINITYFREE + PAYMONGO QUICK DEPLOY
+For mobile checking / school demo
+
+IMPORTANT LIMITATION
+InfinityFree free hosting blocks inbound automated requests/webhooks.
+So DO NOT depend on customer/paymongo-webhook.php on this host.
+This build instead verifies the PayMongo transaction when the customer's browser
+returns from PayMongo, by retrieving the Checkout Session / Payment Intent from
+PayMongo's API using the server-side secret key.
+
+For a school/demo flow this means:
+1. Customer places order.
+2. Customer is redirected to PayMongo.
+3. Customer completes GCash/Maya/Card/QR Ph test payment.
+4. Customer MUST allow PayMongo to redirect back to the Brille Amour site.
+5. The return page verifies the payment with PayMongo's API.
+6. Customer is sent to My Orders and sees the success modal.
+
+If the customer closes the PayMongo tab before returning, there is no InfinityFree
+webhook to update the order in the background. For production/real-money use, move
+to hosting that accepts webhooks.
+
+A) CREATE INFINITYFREE HOSTING
+1. Create a free InfinityFree account and a hosting account.
+2. Create/select your free subdomain.
+3. Enable/install the free SSL certificate and verify HTTPS opens successfully.
+
+B) UPLOAD FILES
+1. Open File Manager or FTP.
+2. Go to the website directory (normally htdocs).
+3. Upload/extract THE CONTENTS of this ZIP directly there.
+4. index.php must be directly inside htdocs, not htdocs/brille-amour/index.php.
+
+C) CREATE MYSQL DATABASE
+1. Control Panel > MySQL Databases > Create Database.
+2. Copy the exact DB Host, DB User and DB Name shown there.
+3. IMPORTANT: InfinityFree's DB host is NOT localhost. It looks like sqlXXX.infinityfree.com.
+4. Open phpMyAdmin and import database-latest.sql.
+
+D) EDIT .env
+Replace:
+  DB_HOST="sqlXXX.infinityfree.com"
+  DB_USER="your exact InfinityFree DB username"
+  DB_PASS="your hosting account/database password"
+  DB_NAME="your exact InfinityFree DB name"
+  PAYMONGO_PUBLIC_URL="https://YOUR-REAL-INFINITYFREE-DOMAIN"
+  PAYMONGO_PUBLIC_KEY="your pk_test_... key"
+  PAYMONGO_SECRET_KEY="your sk_test_... key"
+
+Keep these for InfinityFree free hosting:
+  PAYMONGO_REQUIRE_WEBHOOK="0"
+  PAYMONGO_WEBHOOK_SECRET=""
+
+Never paste secret keys into JavaScript or screenshots.
+
+E) PAYMONGO FOR TOMORROW'S DEMO
+Use TEST MODE keys first.
+Do not create an InfinityFree webhook endpoint; free hosting blocks it.
+The system already uses the HTTPS PAYMONGO_PUBLIC_URL for success/cancel return URLs.
+
+Test:
+1. Open the InfinityFree HTTPS website on your phone.
+2. Log in as customer.
+3. Shop > Buy.
+4. Choose payment method and continue.
+5. Complete PayMongo TEST payment.
+6. Wait for the browser to return to Brille Amour.
+7. It should redirect to customer/orders.php and show the successful-payment modal.
+
+F) IF "PAYMENT UNAVAILABLE" APPEARS
+Check all of these:
+- Website is HTTPS, not HTTP.
+- PAYMONGO_PUBLIC_URL exactly matches the public site and has no trailing slash.
+- PAYMONGO_ENABLED="1".
+- PAYMONGO_REQUIRE_WEBHOOK="0".
+- Correct pk_test_ and sk_test_ keys are in .env.
+- PHP cURL is working and PayMongo's API is reachable from the host.
+
+G) SECURITY
+- Do not share .env.
+- Do not send anyone your sk_test_/sk_live_ key or DB password.
+- Use TEST MODE for class checking unless you are authorized and ready for real charges.
