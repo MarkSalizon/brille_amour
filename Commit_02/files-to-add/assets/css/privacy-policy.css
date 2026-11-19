@@ -1,0 +1,16 @@
+.privacy-page { max-width: 900px; margin: 0 auto; padding: 64px 24px; }
+.privacy-intro { margin-bottom: 32px; }
+.privacy-intro h1 { font-family: Georgia, serif; font-size: clamp(2.5rem, 7vw, 4rem); margin: 12px 0 20px; }
+.privacy-page p, .privacy-page li, .privacy-page address { font-size: 1rem; line-height: 1.8; }
+.privacy-date { font-size: .875rem !important; }
+.privacy-card { background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: clamp(22px, 5vw, 48px); box-shadow: var(--shadow-soft); }
+.privacy-card section + section { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
+.privacy-card h2 { font-size: 1.25rem; margin: 0 0 12px; }
+.privacy-card p { margin: 12px 0; }
+.privacy-card ul { padding-left: 22px; }
+.privacy-card li + li { margin-top: 10px; }
+.privacy-card address { font-style: normal; overflow-wrap: anywhere; }
+.privacy-card a, .privacy-home { color: var(--pink-deep); text-decoration: underline; text-underline-offset: 3px; }
+.privacy-home { padding: 10px; font-weight: 600; }
+.privacy-page a:focus-visible, .privacy-home:focus-visible { outline: 3px solid var(--pink-deep); outline-offset: 4px; }
+@media (max-width: 480px) { .privacy-page { padding: 36px 16px; } .privacy-home { font-size: .85rem; } }

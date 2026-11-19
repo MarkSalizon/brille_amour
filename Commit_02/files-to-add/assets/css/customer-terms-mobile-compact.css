@@ -1,0 +1,175 @@
+/* Mobile-only compact Terms & Privacy review. Loaded after the global mobile layer. */
+@media (max-width: 600px) {
+  html body .ba-terms-review {
+    align-items: center !important;
+    justify-content: center !important;
+    padding: max(14px, env(safe-area-inset-top)) 14px max(14px, env(safe-area-inset-bottom)) !important;
+  }
+
+  html body .ba-terms-review-panel {
+    width: min(100%, 420px) !important;
+    max-width: calc(100vw - 28px) !important;
+    max-height: min(82dvh, 650px) !important;
+    border: 1px solid #efccd8 !important;
+    border-radius: 18px !important;
+    box-shadow: 0 20px 55px rgba(41,16,29,.28) !important;
+  }
+
+  html body .ba-terms-review-header {
+    gap: 8px !important;
+    padding: 10px 12px 8px !important;
+  }
+
+  html body .ba-terms-review-eyebrow {
+    font-size: .56rem !important;
+    letter-spacing: .09em !important;
+  }
+
+  html body .ba-terms-review-header h2 {
+    margin: 2px 0 !important;
+    font-size: 1.02rem !important;
+    line-height: 1.12 !important;
+  }
+
+  html body .ba-terms-review-header p {
+    margin: 0 !important;
+    font-size: .66rem !important;
+    line-height: 1.25 !important;
+  }
+
+  html body .ba-terms-review .ba-terms-review-close {
+    width: 30px !important;
+    height: 30px !important;
+    min-height: 30px !important;
+    font-size: 1.15rem !important;
+  }
+
+  html body .ba-terms-review-tabs {
+    gap: 5px !important;
+    padding: 7px 11px !important;
+  }
+
+  html body .ba-terms-review .ba-terms-review-tabs button {
+    min-height: 34px !important;
+    padding: 6px 5px !important;
+    border-radius: 8px !important;
+    font-size: .67rem !important;
+    line-height: 1.15 !important;
+  }
+
+  html body .ba-terms-review-scroll {
+    min-height: 0 !important;
+    max-height: none !important;
+    flex: 1 1 auto !important;
+    padding: 10px 12px !important;
+  }
+
+  html body .ba-terms-review-document {
+    font-size: .72rem !important;
+    line-height: 1.48 !important;
+  }
+
+  html body .ba-terms-review-document > section + section {
+    margin-top: 11px !important;
+    padding-top: 11px !important;
+  }
+
+  html body .ba-terms-review-document h2 {
+    margin: 0 0 5px !important;
+    font-size: .88rem !important;
+    line-height: 1.28 !important;
+  }
+
+  html body .ba-terms-review-document p,
+  html body .ba-terms-review-document ul,
+  html body .ba-terms-review-document ol {
+    margin-bottom: 7px !important;
+  }
+
+  html body .ba-terms-review-document ul,
+  html body .ba-terms-review-document ol {
+    padding-left: 18px !important;
+  }
+
+  html body .ba-terms-review-footer {
+    padding: 7px 11px max(9px, env(safe-area-inset-bottom)) !important;
+  }
+
+  html body .ba-terms-review-footer p {
+    margin: 0 0 5px !important;
+    font-size: .61rem !important;
+    line-height: 1.25 !important;
+  }
+
+  html body .ba-terms-review .ba-terms-review-continue {
+    min-height: 36px !important;
+    padding: 7px 10px !important;
+    border-radius: 8px !important;
+    font-size: .73rem !important;
+  }
+}
+
+@media (max-width: 360px), (max-height: 700px) {
+  html body .ba-terms-review-panel {
+    max-height: 78dvh !important;
+  }
+
+  html body .ba-terms-review-header p {
+    display: none !important;
+  }
+
+  html body .ba-terms-review-document {
+    font-size: .68rem !important;
+    line-height: 1.42 !important;
+  }
+}
+
+/* Mobile Terms close button polish */
+@media (max-width: 600px) {
+  html body .ba-terms-review .ba-terms-review-close {
+    position: relative !important;
+    display: grid !important;
+    place-items: center !important;
+    flex: 0 0 36px !important;
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 1px solid #edccd8 !important;
+    border-radius: 12px !important;
+    background: #fff !important;
+    color: #8e3158 !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 0 !important;
+    line-height: 1 !important;
+    box-shadow: 0 4px 12px rgba(110, 42, 70, .08) !important;
+  }
+
+  html body .ba-terms-review .ba-terms-review-close::before,
+  html body .ba-terms-review .ba-terms-review-close::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    width: 14px !important;
+    height: 2px !important;
+    border-radius: 999px !important;
+    background: currentColor !important;
+    transform-origin: center !important;
+  }
+
+  html body .ba-terms-review .ba-terms-review-close::before {
+    transform: translate(-50%, -50%) rotate(45deg) !important;
+  }
+
+  html body .ba-terms-review .ba-terms-review-close::after {
+    transform: translate(-50%, -50%) rotate(-45deg) !important;
+  }
+
+  html body .ba-terms-review .ba-terms-review-close:active {
+    transform: scale(.96) !important;
+    background: #fff1f5 !important;
+  }
+}

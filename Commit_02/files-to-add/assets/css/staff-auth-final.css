@@ -1,0 +1,21 @@
+/* Staff auth final normalization — desktop + mobile */
+body.staff-auth-page,
+body.staff-auth-page *{box-sizing:border-box}
+body.staff-auth-page .auth-page{width:100%;min-height:100dvh}
+body.staff-auth-page .auth-shell{width:min(1120px,calc(100% - 32px));max-width:1120px;margin-inline:auto}
+body.staff-auth-page .auth-card{min-width:0;overflow:hidden;border-radius:20px}
+body.staff-auth-page .auth-form-panel,body.staff-auth-page .brand-panel{min-width:0}
+body.staff-auth-page .auth-form,body.staff-auth-page .field-grid,body.staff-auth-page .field,body.staff-auth-page .input-wrap{min-width:0}
+body.staff-auth-page :where(input,select,textarea,button){max-width:100%;min-width:0}
+body.staff-auth-page .field-input{width:100%}
+@media(max-width:760px){
+  body.staff-auth-page .auth-page{display:flex;align-items:center;padding:14px!important}
+  body.staff-auth-page .auth-shell{width:min(100%,520px)!important;max-width:520px!important;margin:auto!important}
+  body.staff-auth-page .topline{width:100%;margin-bottom:10px!important}
+  body.staff-auth-page .auth-card{width:100%!important;border-radius:17px!important}
+  body.staff-auth-page .auth-form-panel{padding:18px 16px!important}
+  body.staff-auth-page .auth-form{gap:10px!important}
+  body.staff-auth-page .field-grid{grid-template-columns:minmax(0,1fr)!important;gap:9px!important}
+  body.staff-auth-page .field-input{min-height:44px!important}
+  body.staff-auth-page .primary-button,body.staff-auth-page .google-fallback-button{min-height:44px!important}
+}
