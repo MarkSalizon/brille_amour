@@ -1,0 +1,445 @@
+/* Brillé Amour | Admin Orders — page-only professional presentation. */
+body.ac-body.admin-orders-page .orders-page-heading {
+  margin-bottom: 20px;
+  gap: 16px;
+}
+body.ac-body.admin-orders-page .orders-page-heading h1 {
+  margin: 0 0 5px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.6rem, 2.6vw, 2rem);
+  line-height: 1.15;
+  color: var(--ink);
+}
+body.ac-body.admin-orders-page .orders-page-heading p {
+  margin: 0;
+  font-size: .84rem;
+  line-height: 1.5;
+  color: var(--ink-muted);
+}
+body.ac-body.admin-orders-page .orders-new-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 43px;
+  padding-inline: 18px;
+  border-radius: 11px;
+  font-weight: 700;
+}
+body.ac-body.admin-orders-page .orders-new-button span {
+  font-size: 1.24rem;
+  line-height: 1;
+  font-weight: 400;
+}
+body.ac-body.admin-orders-page .orders-stage-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+body.ac-body.admin-orders-page .orders-stage-card {
+  display: grid;
+  align-content: space-between;
+  gap: 5px;
+  min-width: 0;
+  min-height: 122px;
+  padding: 16px 17px;
+  border: 1px solid #ebdfe4;
+  border-radius: 16px;
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 4px 18px rgba(61, 27, 42, .035);
+  text-decoration: none;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+body.ac-body.admin-orders-page .orders-stage-card:hover,
+body.ac-body.admin-orders-page .orders-stage-card:focus-visible,
+body.ac-body.admin-orders-page .orders-stage-card.is-current {
+  border-color: #ca8099;
+  background: #fff9fb;
+  box-shadow: 0 7px 24px rgba(143, 64, 91, .08);
+}
+body.ac-body.admin-orders-page .orders-stage-card:hover { transform: translateY(-2px); }
+body.ac-body.admin-orders-page .orders-stage-card:focus-visible { outline: 2px solid var(--rose); outline-offset: 2px; }
+body.ac-body.admin-orders-page .orders-stage-label {
+  font-size: .78rem;
+  font-weight: 700;
+  color: #674e5b;
+}
+body.ac-body.admin-orders-page .orders-stage-total {
+  font-size: clamp(1.42rem, 2.7vw, 1.9rem);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.18;
+  color: #382731;
+}
+body.ac-body.admin-orders-page .orders-stage-hint {
+  font-size: .7rem;
+  color: #927d87;
+  line-height: 1.3;
+}
+body.ac-body.admin-orders-page .orders-filter-card {
+  display: block;
+  margin-bottom: 18px;
+  padding: 12px;
+  border: 1px solid #ebdfe4;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 4px 18px rgba(61, 27, 42, .025);
+}
+body.ac-body.admin-orders-page .orders-filter-form {
+  display: grid;
+  grid-template-columns: minmax(190px, 1fr) minmax(155px, 215px) auto auto;
+  align-items: end;
+  gap: 10px;
+  width: 100%;
+}
+body.ac-body.admin-orders-page .orders-search-field {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  margin: 0;
+  padding: 0 12px;
+  border: 1px solid #e4d8de;
+  border-radius: 11px;
+  background: #fff;
+}
+body.ac-body.admin-orders-page .orders-search-field svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  stroke: #a28492;
+  stroke-width: 1.8;
+  fill: none;
+  stroke-linecap: round;
+}
+body.ac-body.admin-orders-page .orders-search-field input {
+  min-width: 0;
+  min-height: 41px;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  box-shadow: none;
+  font-size: .83rem;
+}
+body.ac-body.admin-orders-page .orders-search-field:focus-within {
+  border-color: #c77590;
+  box-shadow: 0 0 0 3px rgba(199, 60, 98, .10);
+}
+body.ac-body.admin-orders-page .orders-filter-status {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+  font-size: .7rem;
+  font-weight: 700;
+  color: #755e6b;
+}
+body.ac-body.admin-orders-page .orders-filter-status select {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid #e4d8de;
+  border-radius: 11px;
+  background-color: #fff;
+  color: #47333e;
+  font-size: .83rem;
+}
+body.ac-body.admin-orders-page .orders-filter-submit,
+body.ac-body.admin-orders-page .orders-filter-reset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 11px;
+  font-size: .8rem;
+  white-space: nowrap;
+}
+body.ac-body.admin-orders-page .orders-results-card {
+  overflow: hidden !important;
+  border: 1px solid #ebdfe4;
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 5px 22px rgba(61, 27, 42, .035);
+}
+body.ac-body.admin-orders-page .orders-results-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 73px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #efe5e9;
+}
+body.ac-body.admin-orders-page .orders-results-head h2 {
+  margin: 0 0 3px;
+  font-size: .98rem;
+  font-weight: 750;
+  color: #3c2b35;
+}
+body.ac-body.admin-orders-page .orders-results-head .orders-count {
+  font-size: .75rem;
+  color: #8b7680;
+}
+body.ac-body.admin-orders-page .orders-show-all {
+  flex: 0 0 auto;
+  color: #b0395d;
+  font-size: .76rem;
+  font-weight: 750;
+  text-decoration: none;
+}
+body.ac-body.admin-orders-page .orders-show-all:hover { text-decoration: underline; }
+body.ac-body.admin-orders-page .admin-orders-list {
+  display: grid;
+  gap: 0;
+  padding: 0;
+}
+body.ac-body.admin-orders-page .admin-order-row {
+  display: grid;
+  grid-template-columns: minmax(150px, 1.45fr) minmax(130px, 1.1fr) minmax(145px, 1.5fr) minmax(95px, .8fr) minmax(135px, .95fr);
+  align-items: center;
+  gap: 15px;
+  min-width: 0;
+  min-height: 89px;
+  padding: 15px 20px;
+  border: 0;
+  border-bottom: 1px solid #f0e8eb;
+  border-radius: 0;
+  background: #fff;
+  box-sizing: border-box;
+  outline-offset: -3px;
+  cursor: pointer;
+  transition: background .15s ease;
+}
+body.ac-body.admin-orders-page .admin-order-row:last-child { border-bottom: 0; }
+body.ac-body.admin-orders-page .admin-order-row:hover,
+body.ac-body.admin-orders-page .admin-order-row:focus-visible {
+  background: #fff7fa;
+  border-color: #f0e8eb;
+  transform: none;
+}
+body.ac-body.admin-orders-page .admin-order-row:focus-visible { outline: 2px solid #b73c62; }
+body.ac-body.admin-orders-page .admin-order-row.overdue-row {
+  border-left: 3px solid #d77171;
+  padding-left: 17px;
+}
+body.ac-body.admin-orders-page .admin-order-row-main,
+body.ac-body.admin-orders-page .admin-order-product,
+body.ac-body.admin-orders-page .admin-order-schedule {
+  display: grid;
+  align-content: center;
+  justify-content: start;
+  min-width: 0;
+  gap: 5px;
+}
+body.ac-body.admin-orders-page .admin-order-row-id {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #b13a60;
+  font-size: .73rem;
+  font-weight: 750;
+  letter-spacing: .015em;
+}
+body.ac-body.admin-orders-page .admin-order-row-name,
+body.ac-body.admin-orders-page .admin-order-product strong {
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: .83rem;
+  font-weight: 750;
+  line-height: 1.3;
+  color: #362934;
+}
+body.ac-body.admin-orders-page .admin-order-row-subline,
+body.ac-body.admin-orders-page .admin-order-product span,
+body.ac-body.admin-orders-page .admin-order-schedule > span:first-child {
+  color: #8a7480;
+  font-size: .73rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+body.ac-body.admin-orders-page .admin-order-price {
+  justify-self: start;
+  white-space: nowrap;
+  color: #49303e;
+  font-size: .84rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+body.ac-body.admin-orders-page .admin-order-late {
+  justify-self: start;
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: #fff1f1;
+  color: #af4444;
+  font-size: .66rem;
+  font-weight: 750;
+}
+body.ac-body.admin-orders-page .admin-order-row-meta {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+body.ac-body.admin-orders-page .admin-order-row-meta .badge { white-space: nowrap; }
+body.ac-body.admin-orders-page .order-open-hint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 25px;
+  width: 25px;
+  height: 25px;
+  border-radius: 8px;
+  background: #fbf3f6;
+  color: #a54c68;
+  font-size: 1.16rem;
+  line-height: 1;
+}
+body.ac-body.admin-orders-page .admin-orders-empty {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 52px 20px;
+  text-align: center;
+}
+body.ac-body.admin-orders-page .orders-empty-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 15px;
+  background: #fff0f5;
+  color: #b34969;
+  font-size: 1.65rem;
+}
+body.ac-body.admin-orders-page .admin-orders-empty strong { font-size: .91rem; color: #3b2a34; }
+body.ac-body.admin-orders-page .admin-orders-empty p { margin: 0 0 5px; color: #907983; font-size: .78rem; }
+body.ac-body.admin-orders-page .order-details-backdrop { padding: 15px; background: rgba(39,25,33,.54); backdrop-filter: blur(3px); }
+body.ac-body.admin-orders-page .order-details-modal {
+  width: min(820px, 100%);
+  max-height: min(90dvh, 820px);
+  border-radius: 19px;
+  border: 1px solid #ead9e0;
+  background: #fff;
+  box-shadow: 0 30px 90px rgba(35,17,26,.24);
+}
+body.ac-body.admin-orders-page .order-details-header { padding: 20px 22px; border-bottom-color: #f0e3e9; }
+body.ac-body.admin-orders-page .order-details-title { font-size: 1.03rem; color: #3b2833; }
+body.ac-body.admin-orders-page .order-details-body { padding: 18px 22px; }
+body.ac-body.admin-orders-page .order-details-grid { gap: 10px; }
+body.ac-body.admin-orders-page .order-detail-item { padding: 12px 14px; border: 1px solid #f0e7eb; border-radius: 11px; background: #fffbfc; }
+body.ac-body.admin-orders-page .order-detail-label { margin-bottom: 5px; font-size: .68rem; }
+body.ac-body.admin-orders-page .order-detail-value { font-size: .83rem; }
+body.ac-body.admin-orders-page .order-details-actions { padding: 14px 22px; border-top-color: #f0e3e9; background: #fffafb; }
+body.ac-body.admin-orders-page #orderModal .modal { border-radius: 17px; overflow: auto; max-height: min(92dvh, 900px); }
+body.ac-body.admin-orders-page #orderModal .modal-header { background: #fffafb; border-bottom: 1px solid #f0e3e9; }
+body.ac-body.admin-orders-page #orderModal .modal-section { color: #9d5470; }
+
+@media (max-width: 1150px) {
+  body.ac-body.admin-orders-page .admin-order-row {
+    grid-template-columns: minmax(140px,1.35fr) minmax(125px,1.1fr) minmax(145px,1.35fr) minmax(95px,.8fr);
+    gap: 13px;
+  }
+  body.ac-body.admin-orders-page .admin-order-row-meta { grid-column: 4; grid-row: 1; }
+  body.ac-body.admin-orders-page .admin-order-price { display: none; }
+  body.ac-body.admin-orders-page .order-open-hint { display: none; }
+}
+@media (max-width: 870px) {
+  body.ac-body.admin-orders-page .orders-stage-summary { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+  body.ac-body.admin-orders-page .orders-stage-card { min-height: 104px; }
+  body.ac-body.admin-orders-page .orders-filter-form { grid-template-columns: minmax(0,1fr) minmax(135px, 180px) auto; }
+  body.ac-body.admin-orders-page .orders-filter-reset { grid-column: 3; }
+  body.ac-body.admin-orders-page .admin-order-row {
+    grid-template-columns: minmax(0,1.2fr) minmax(0,1fr) auto;
+    gap: 12px;
+  }
+  body.ac-body.admin-orders-page .admin-order-schedule { grid-column: 1 / 3; grid-row: 2; }
+  body.ac-body.admin-orders-page .admin-order-row-meta { grid-column: 3; grid-row: 1 / 3; }
+}
+@media (max-width: 640px) {
+  body.ac-body.admin-orders-page .orders-page-heading { margin-bottom: 16px !important; }
+  body.ac-body.admin-orders-page .orders-page-heading h1 { font-size: 1.67rem !important; }
+  body.ac-body.admin-orders-page .orders-page-heading p { font-size: .82rem !important; }
+  body.ac-body.admin-orders-page .orders-new-button { min-height: 44px !important; width: 100% !important; }
+  body.ac-body.admin-orders-page .orders-stage-summary { gap: 9px; margin-bottom: 15px; }
+  body.ac-body.admin-orders-page .orders-stage-card { min-height: 102px; padding: 12px; border-radius: 13px; }
+  body.ac-body.admin-orders-page .orders-stage-total { font-size: 1.5rem; }
+  body.ac-body.admin-orders-page .orders-stage-hint { font-size: .65rem; }
+  body.ac-body.admin-orders-page .orders-filter-card {
+    display: block !important;
+    padding: 12px !important;
+    margin-bottom: 15px !important;
+  }
+  body.ac-body.admin-orders-page .orders-filter-form { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
+  body.ac-body.admin-orders-page .orders-search-field {
+    display: flex !important;
+    grid-column: 1 / -1;
+    min-height: 46px !important;
+    padding: 0 12px !important;
+    overflow: visible !important;
+    border: 1px solid #e4d8de !important;
+    border-radius: 11px !important;
+    background: #fff !important;
+  }
+  body.ac-body.admin-orders-page .orders-search-field input {
+    display: block !important;
+    min-height: 42px !important;
+    width: 100% !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    font-size: .85rem !important;
+  }
+  body.ac-body.admin-orders-page .orders-filter-status { grid-column: 1 / -1; }
+  body.ac-body.admin-orders-page .orders-filter-status select { min-height: 44px !important; }
+  body.ac-body.admin-orders-page .orders-filter-submit,
+  body.ac-body.admin-orders-page .orders-filter-reset { grid-column: auto; min-height: 44px !important; width: 100% !important; }
+  body.ac-body.admin-orders-page .orders-filter-submit:only-child { grid-column: 1 / -1; }
+  body.ac-body.admin-orders-page .orders-results-card { overflow: hidden !important; border-radius: 14px !important; }
+  body.ac-body.admin-orders-page .orders-results-head { min-height: 66px; padding: 13px 14px !important; }
+  body.ac-body.admin-orders-page .orders-show-all { font-size: .72rem; }
+  body.ac-body.admin-orders-page .admin-orders-list { gap: 0 !important; padding: 0 !important; }
+  body.ac-body.admin-orders-page .admin-order-row {
+    display: grid !important;
+    grid-template-columns: minmax(0,1fr) auto;
+    grid-template-rows: auto auto auto;
+    gap: 8px 12px;
+    padding: 14px !important;
+    border-radius: 0 !important;
+    min-height: auto;
+  }
+  body.ac-body.admin-orders-page .admin-order-row.overdue-row { padding-left: 11px !important; }
+  body.ac-body.admin-orders-page .admin-order-row-main { grid-column: 1; grid-row: 1; min-width: 0; }
+  body.ac-body.admin-orders-page .admin-order-product { grid-column: 1; grid-row: 2; min-width: 0; }
+  body.ac-body.admin-orders-page .admin-order-schedule { grid-column: 1 / -1; grid-row: 3; min-width: 0; }
+  body.ac-body.admin-orders-page .admin-order-price { display: block; grid-column: 2; grid-row: 2; align-self: center; font-size: .78rem; }
+  body.ac-body.admin-orders-page .admin-order-row-meta { grid-column: 2; grid-row: 1; align-self: start; }
+  body.ac-body.admin-orders-page .admin-order-row-subline { font-size: .69rem; }
+  body.ac-body.admin-orders-page .admin-order-schedule > span:first-child { font-size: .72rem; }
+  body.ac-body.admin-orders-page .order-details-modal { max-height: calc(100dvh - 20px); border-radius: 15px; }
+  body.ac-body.admin-orders-page .order-details-header,
+  body.ac-body.admin-orders-page .order-details-body,
+  body.ac-body.admin-orders-page .order-details-actions { padding: 14px; }
+  body.ac-body.admin-orders-page .order-details-grid { grid-template-columns: 1fr; }
+  body.ac-body.admin-orders-page .order-detail-wide { grid-column: auto; }
+  body.ac-body.admin-orders-page .order-details-actions { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  body.ac-body.admin-orders-page .order-details-actions > .btn { min-width: 0; }
+}
+@media (max-width: 380px) {
+  body.ac-body.admin-orders-page .admin-order-row { gap: 8px 6px; }
+  body.ac-body.admin-orders-page .admin-order-row-meta .badge { font-size: .63rem; }
+  body.ac-body.admin-orders-page .admin-order-row-name { font-size: .78rem; }
+  body.ac-body.admin-orders-page .admin-order-price { font-size: .73rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.ac-body.admin-orders-page .orders-stage-card,
+  body.ac-body.admin-orders-page .admin-order-row { transition: none; }
+}

@@ -1,0 +1,28 @@
+/* Single pre-order CTA: regular product cards have two columns (cart icon + Buy),
+   but a quotation card has only one link. Give it the full card width. */
+.customer-shop-main .portal-buy-actions.portal-preorder-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+  min-width: 0;
+}
+.customer-shop-main .portal-preorder-actions > .portal-preorder-button {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 45px;
+  height: auto;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: .84rem;
+  line-height: 1.35;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+}

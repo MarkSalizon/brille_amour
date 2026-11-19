@@ -1,0 +1,219 @@
+.gcash-pay-button { margin: 12px 0 18px; background: #005ce5 !important; color: #fff !important; }
+.gcash-dialog { box-sizing: border-box; width: min(440px, calc(100vw - 32px)); max-height: 90vh; max-height: 90dvh; margin: auto; padding: 22px; border: 0; border-radius: 18px; background: #fff; color: #172b4d; overflow-y: auto; overscroll-behavior: contain; box-shadow: 0 24px 80px #0004; }
+.gcash-dialog::backdrop { background: #102440b3; }
+.gcash-dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.gcash-dialog-header h2 { margin: 0; font-size: 24px; }
+.gcash-dialog-close { flex-shrink: 0; width: 44px; height: 44px; border: 0; border-radius: 50%; background: #eef3fa; color: #172b4d; font-size: 28px; cursor: pointer; }
+.gcash-pay-amount { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.gcash-dialog-qr { display: block; width: auto; max-width: 100%; max-height: 42vh; margin: 12px auto; object-fit: contain; }
+.gcash-dialog a { color: #005ce5; text-decoration: underline; }
+.gcash-dialog .fine-print { margin: 14px 0; }
+.gcash-manual-notice { display: grid; gap: 4px; margin: 12px 0; padding: 13px 14px; border: 1px solid #cfe0ff; border-radius: 12px; background: #f4f8ff; }
+.gcash-manual-notice strong { color: #0b4fb3; }
+.gcash-manual-notice span { font-size: 13px; line-height: 1.45; color: #50627a; }
+.gcash-step-list { display: grid; gap: 8px; margin: 16px 0; }
+.gcash-step-list span { display: flex; align-items: center; gap: 9px; font-size: 14px; }
+.gcash-step-list b { display: inline-grid; place-items: center; flex: 0 0 26px; width: 26px; height: 26px; border-radius: 50%; background: #e7f0ff; color: #005ce5; }
+.gcash-recipient { display: grid; gap: 2px; justify-items: center; margin: 8px 0 12px; text-align: center; }
+.gcash-recipient span, .gcash-recipient small { color: #66758a; }
+.gcash-recipient strong { font-size: 18px; }
+.gcash-save-link { display: block; width: fit-content; margin: 0 auto 8px; }
+.gcash-proof-fields { margin-top: 14px; }
+.gcash-proof-fields label > small { display: block; margin-top: 5px; color: #66758a; font-size: 12px; }
+.gcash-proof-preview { margin: 2px 0 10px; padding: 12px; border: 1px solid #d9e4f5; border-radius: 12px; background: #fff; }
+.gcash-proof-preview > span { display: block; margin-bottom: 8px; font-size: 12px; font-weight: 700; color: #66758a; text-transform: uppercase; letter-spacing: .04em; }
+.gcash-proof-preview img { display: block; max-width: 100%; max-height: 260px; margin: auto; object-fit: contain; border-radius: 8px; }
+.order-overlay label.gcash-confirmation { display: flex !important; align-items: flex-start !important; justify-content: flex-start; gap: 8px !important; margin-top: 12px; padding: 12px; border-radius: 12px; background: #f7fafc; text-align: left; }
+/* A checkbox must not inherit the full-width, padded text-field styles. */
+.order-overlay .gcash-confirmation > input[type="checkbox"] { flex: 0 0 18px; width: 18px !important; min-width: 18px !important; max-width: 18px !important; height: 18px !important; min-height: 18px !important; margin: 3px 0 0 !important; padding: 0 !important; }
+.order-overlay .gcash-confirmation > span { flex: 1 1 auto; min-width: 0; font-size: 1rem !important; line-height: 1.5 !important; white-space: normal; word-spacing: normal; letter-spacing: normal; }
+.order-overlay .gcash-confirmation > span > strong { display: inline; }
+.gcash-change-warning { margin: 10px 0 0; padding: 10px 12px; border-radius: 10px; background: #fff3cd; color: #7a4d00; font-size: 13px; line-height: 1.45; }
+
+.gcash-auto-reference { margin: 10px 0 14px; padding: 12px 14px; border: 1px solid #cfe0ff; border-radius: 12px; background: #f4f8ff; }
+.gcash-auto-reference span, .gcash-auto-reference small { display: block; color: #66758a; }
+.gcash-auto-reference span { margin-bottom: 5px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+.gcash-auto-reference strong { display: block; margin-bottom: 4px; font-size: 18px; letter-spacing: .03em; color: #0b4fb3; overflow-wrap: anywhere; }
+.gcash-auto-reference small { font-size: 12px; line-height: 1.45; }
+
+/* Flexible payment + pickup availability helpers */
+#pickupDateStatus.pickup-available { color: #15803d; font-weight: 700; }
+#pickupDateStatus.pickup-warning { color: #b45309; font-weight: 700; }
+#pickupDateStatus.pickup-full { color: #b91c1c; font-weight: 800; }
+#otherPaymentWrap[hidden] { display: none !important; }
+
+.pickup-date-grid label:first-child { gap: 8px; }
+.pickup-date-display { cursor: default; background: #fff; }
+.pickup-calendar-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 6px; }
+.pickup-refresh { border: 1px solid #cfe0ff; border-radius: 999px; background: #f4f8ff; color: #0b4fb3; padding: 7px 11px; font-weight: 800; cursor: pointer; }
+.pickup-refresh:disabled { opacity: .55; cursor: wait; }
+#pickupLastUpdated { color: #66758a; }
+.pickup-calendar { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; max-height: 260px; overflow: auto; padding: 10px; margin-top: 8px; border: 1px solid #d9e4f5; border-radius: 14px; background: #fbfdff; }
+.pickup-day { display: grid; gap: 3px; min-height: 64px; padding: 10px 8px; border: 1px solid #dbe7f5; border-radius: 13px; background: #fff; color: #172b4d; text-align: left; cursor: pointer; transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease; }
+.pickup-day:hover:not(:disabled) { transform: translateY(-1px); border-color: #90b7ff; box-shadow: 0 8px 18px #1d4ed81a; }
+.pickup-day strong { font-size: 13px; }
+.pickup-day small { color: #66758a; font-size: 12px; }
+.pickup-day.available small { color: #15803d; font-weight: 800; }
+.pickup-day.almost-full { border-color: #f59e0b; background: #fffbeb; }
+.pickup-day.almost-full small { color: #b45309; font-weight: 800; }
+.pickup-day.disabled { background: #fff1f2; border-color: #fecdd3; color: #9f1239; cursor: not-allowed; opacity: .78; }
+.pickup-day.disabled small { color: #b91c1c; font-weight: 900; }
+.pickup-day.selected { outline: 3px solid #bfdbfe; border-color: #2563eb; box-shadow: 0 0 0 1px #2563eb33; }
+@media (max-width: 640px) { .pickup-calendar { grid-template-columns: repeat(2, minmax(0, 1fr)); max-height: 300px; } .pickup-calendar-toolbar { align-items: flex-start; flex-direction: column; } }
+
+/* PayMongo hosted checkout */
+.paymongo-gateway-card { display:flex; align-items:flex-start; gap:12px; margin:14px 0 18px; padding:15px 16px; border:1px solid #cfe0ff; border-radius:14px; background:#f4f8ff; color:#17324d; }
+.paymongo-gateway-icon { display:grid; place-items:center; flex:0 0 38px; width:38px; height:38px; border-radius:12px; background:#005ce5; color:#fff; font-weight:900; }
+.paymongo-gateway-card > div:last-child { display:grid; gap:5px; min-width:0; }
+.paymongo-gateway-card strong { color:#0b4fb3; }
+.paymongo-gateway-card span { font-size:13px; line-height:1.5; color:#50627a; }
+.paymongo-gateway-card small { margin-top:2px; color:#8a4b00; line-height:1.45; }
+.paymongo-unavailable { border-color:#fecaca; background:#fff1f2; }
+.paymongo-unavailable .paymongo-gateway-icon { background:#b91c1c; }
+.paymongo-unavailable strong { color:#991b1b; }
+.checkout-submit-button:disabled { opacity:.55; cursor:not-allowed; }
+
+/* PayMongo payment method selector */
+.paymongo-methods {
+  margin: 0 0 18px;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.paymongo-methods legend {
+  margin: 0 0 10px;
+  padding: 0;
+  color: #2c2430;
+  font-size: .95rem;
+  font-weight: 600;
+}
+.paymongo-method-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.order-overlay label.paymongo-method-card,
+.paymongo-method-card {
+  position: relative;
+  display: grid !important;
+  grid-template-columns: 42px minmax(0, 1fr) 20px;
+  align-items: center !important;
+  gap: 11px !important;
+  min-width: 0;
+  min-height: 78px;
+  margin: 0 !important;
+  padding: 12px 13px !important;
+  border: 1px solid #e3d9d3 !important;
+  border-radius: 14px !important;
+  background: #fff !important;
+  color: #2c2430 !important;
+  cursor: pointer;
+  text-align: left !important;
+  transition: border-color .16s ease, box-shadow .16s ease, background .16s ease;
+}
+.paymongo-method-card:hover {
+  border-color: #cf9da8 !important;
+  box-shadow: 0 7px 18px rgba(72, 43, 52, .07);
+}
+.order-overlay .paymongo-method-card > input[type="radio"],
+.paymongo-method-card > input[type="radio"] {
+  position: absolute !important;
+  inline-size: 1px !important;
+  block-size: 1px !important;
+  opacity: 0 !important;
+  pointer-events: none;
+}
+.paymongo-method-card:has(input:checked) {
+  border-color: #c24a67 !important;
+  background: #fff8fa !important;
+  box-shadow: 0 0 0 2px rgba(194, 74, 103, .10);
+}
+.paymongo-method-mark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  background: #f6f1ed;
+  color: #7d4654 !important;
+  font-size: .95rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+}
+.paymongo-method-card:has(input:checked) .paymongo-method-mark {
+  background: #f8e4e9;
+  color: #9b3350 !important;
+}
+.paymongo-method-mark.wide { font-size: .72rem !important; }
+.paymongo-method-mark.card-mark { position: relative; }
+.paymongo-method-mark.card-mark::before {
+  content: "";
+  width: 23px;
+  height: 15px;
+  border: 1.7px solid currentColor;
+  border-radius: 3px;
+}
+.paymongo-method-mark.card-mark::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 2px;
+  background: currentColor;
+  transform: translateY(-3px);
+}
+.paymongo-method-copy {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.paymongo-method-copy strong {
+  color: #2f2529 !important;
+  font-size: .93rem !important;
+  font-weight: 600 !important;
+  line-height: 1.25 !important;
+}
+.paymongo-method-copy small {
+  color: #756c72 !important;
+  font-size: .78rem !important;
+  font-weight: 400 !important;
+  line-height: 1.35 !important;
+}
+.paymongo-method-check {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid #cfc5c0;
+  border-radius: 50%;
+  background: #fff;
+}
+.paymongo-method-card:has(input:checked) .paymongo-method-check {
+  border-color: #c24a67;
+  background: #c24a67;
+}
+.paymongo-method-card:has(input:checked) .paymongo-method-check::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 3px;
+  width: 4px;
+  height: 7px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.paymongo-method-card:focus-within {
+  outline: 3px solid rgba(194, 74, 103, .16);
+  outline-offset: 2px;
+}
+.paymongo-method-note {
+  margin: 9px 2px 0;
+  color: #766d72;
+  font-size: .78rem !important;
+  line-height: 1.45 !important;
+}
+
+@media (max-width: 640px) {
+  .paymongo-method-grid { grid-template-columns: 1fr; }
+  .order-overlay label.paymongo-method-card,
+  .paymongo-method-card { min-height: 70px; }
+}

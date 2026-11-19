@@ -1,0 +1,34 @@
+/* Admin order details: clear instructions and compact, readable records. */
+#adminProductionOrderView, #adminProductionOrderView * {box-sizing:border-box;}
+#adminProductionOrderView {min-width:0;max-width:1480px;margin:0 auto;padding-bottom:30px;color:#382a33;}
+#adminProductionOrderView .back-bar {display:flex;flex-wrap:wrap;align-items:center;gap:9px 12px;margin:0 0 15px;min-width:0;}
+#adminProductionOrderView .back-bar>div {display:flex;flex-wrap:wrap;gap:8px;margin-left:auto;}
+#adminProductionOrderView .back-bar .btn {min-height:35px;padding:7px 12px;border-radius:9px;font-size:.76rem;white-space:normal;}
+#adminProductionOrderView .admin-order-customer-brief {min-width:0;margin:0 0 16px;border:1px solid #eadce3;border-radius:15px;background:#fff;box-shadow:0 4px 18px rgba(62,32,47,.035);overflow:hidden;}
+#adminProductionOrderView .admin-order-brief-head {display:flex;align-items:center;justify-content:space-between;gap:9px;padding:14px 18px;border-bottom:1px solid #f1e7eb;}
+#adminProductionOrderView .admin-order-brief-head h2 {margin:0;font:750 .97rem/1.3 'DM Sans',system-ui,sans-serif;color:#392c35;}
+#adminProductionOrderView .admin-order-brief-head span {color:#8c7a83;font-size:.72rem;}
+#adminProductionOrderView .admin-order-brief-body {display:flex;align-items:start;flex-wrap:wrap;gap:14px 22px;padding:16px 18px;min-width:0;}
+#adminProductionOrderView .admin-order-brief-empty {margin:0;color:#82717a;font-size:.8rem;line-height:1.5;}
+#adminProductionOrderView .admin-order-brief-text {flex:1 1 240px;min-width:0;}
+#adminProductionOrderView .admin-order-brief-text strong,#adminProductionOrderView .admin-order-reference>strong {display:block;margin-bottom:8px;color:#67505d;font-size:.75rem;font-weight:750;}
+#adminProductionOrderView .admin-order-brief-text p {margin:0;padding:10px 12px;border:1px solid #f0e3e8;border-radius:9px;background:#fffbfc;color:#483844;font-size:.81rem;line-height:1.6;overflow-wrap:anywhere;}
+#adminProductionOrderView .admin-order-reference {flex:0 1 210px;min-width:0;}
+#adminProductionOrderView .admin-order-reference a,#adminProductionOrderView .admin-order-reference .admin-order-reference-card {display:grid;gap:6px;min-width:0;padding:8px;border:1px solid #e8dce2;border-radius:10px;background:#fff;color:#9a3f60;text-decoration:none;font-size:.73rem;font-weight:700;}
+#adminProductionOrderView .admin-order-reference a:hover {border-color:#dbaaba;background:#fff9fb;}
+#adminProductionOrderView .admin-order-reference img {display:block;width:100%;height:124px;object-fit:contain;background:#f8f4f6;border-radius:6px;}
+#adminProductionOrderView .admin-order-download {display:inline-flex;align-items:center;justify-content:center;min-height:36px;margin-top:8px;padding:8px 12px;border:1px solid #dfc6d0;border-radius:10px;background:#fff9fb;color:#9a3f60;text-decoration:none;font-size:.73rem;font-weight:700;}
+#adminProductionOrderView .admin-order-download:hover {background:#fff1f5;border-color:#d8aabc;}
+#adminProductionOrderView .detail-grid {display:grid;grid-template-columns:minmax(0,1.4fr) minmax(270px,.9fr);gap:15px;align-items:start;}
+#adminProductionOrderView .detail-card {min-width:0;border-radius:14px;overflow:hidden;}
+#adminProductionOrderView .detail-card-hdr {min-width:0;gap:12px;flex-wrap:wrap;}
+#adminProductionOrderView .detail-card-hdr .text-sm {overflow-wrap:anywhere;}
+#adminProductionOrderView .detail-row {gap:12px;padding:11px 0;min-width:0;}
+#adminProductionOrderView .detail-value {min-width:0;text-align:right;overflow-wrap:anywhere;}
+#adminProductionOrderView .admin-order-finance {margin-top:15px;border:1px solid #eee2e7;border-radius:11px;overflow:hidden;}
+#adminProductionOrderView .admin-order-finance>summary {display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;list-style:none;padding:12px 14px;font-size:.82rem;font-weight:750;color:#584451;background:#fffafc;}
+#adminProductionOrderView .admin-order-finance>summary::-webkit-details-marker {display:none;}
+#adminProductionOrderView .admin-order-finance>summary span {font-size:.74rem;font-weight:600;color:#8d697a;}
+#adminProductionOrderView .admin-order-finance .finance-box {margin:0;border:0;border-top:1px solid #eee2e7;border-radius:0;}
+@media(max-width:1000px){#adminProductionOrderView .detail-grid {grid-template-columns:minmax(0,1fr);}}
+@media(max-width:580px){#adminProductionOrderView .back-bar>div{margin-left:0;width:100%;}#adminProductionOrderView .admin-order-brief-head{padding:12px 14px;}#adminProductionOrderView .admin-order-brief-body{padding:13px 14px;}#adminProductionOrderView .admin-order-reference{flex:1 1 100%;}#adminProductionOrderView .admin-order-reference a{width:min(100%,220px);}#adminProductionOrderView .detail-card-hdr{gap:6px;}#adminProductionOrderView .detail-row{flex-wrap:wrap;}#adminProductionOrderView .detail-value{text-align:left;} }

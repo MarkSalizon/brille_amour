@@ -1,0 +1,89 @@
+/* Staff Order Details: focused, production-ready view shared by Production + QC. */
+#staffOrderView,
+#staffOrderView * { box-sizing: border-box; }
+#staffOrderView { --sov-border:#eadde3; --sov-muted:#7b6b75; --sov-ink:#352931; --sov-accent:#aa3c60; --sov-soft:#fff5f8; color:var(--sov-ink); min-width:0; max-width:1450px; margin:0 auto; padding:2px 0 32px; font-family:'DM Sans',system-ui,sans-serif; }
+#staffOrderView .sov-heading { display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-bottom:17px; }
+#staffOrderView .sov-heading-main { min-width:0; }
+#staffOrderView .sov-back { display:inline-flex; align-items:center; gap:7px; min-height:36px; padding:6px 11px; border:1px solid var(--sov-border); border-radius:10px; background:#fff; color:#8c3757; text-decoration:none; font-size:.78rem; font-weight:650; }
+#staffOrderView .sov-back:hover { background:var(--sov-soft); border-color:#e8c8d4; }
+#staffOrderView .sov-heading-line { display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:13px 0 4px; }
+#staffOrderView .sov-heading h1 { margin:0; min-width:0; color:#30252c; font-family:'DM Sans',system-ui,sans-serif; font-size:clamp(1.3rem,2.2vw,1.7rem); font-weight:750; line-height:1.25; letter-spacing:-.025em; overflow-wrap:anywhere; }
+#staffOrderView .sov-heading p { margin:5px 0 0; color:var(--sov-muted); font-size:.8rem; line-height:1.5; }
+#staffOrderView .sov-stage,#staffOrderView .sov-overdue { display:inline-flex; align-items:center; min-height:26px; padding:4px 9px; border:1px solid #d7e4fa; border-radius:999px; background:#f3f7ff; color:#385e96; font-size:.7rem; font-weight:700; white-space:nowrap; }
+#staffOrderView .sov-overdue { border-color:#f1d7d7; background:#fff3f3; color:#a04747; }
+#staffOrderView .sov-layout { display:grid; grid-template-columns:minmax(0,1.48fr) minmax(270px,.92fr); align-items:start; gap:16px; min-width:0; }
+#staffOrderView .sov-main-column,#staffOrderView .sov-side-column { display:grid; align-content:start; gap:16px; min-width:0; }
+#staffOrderView .sov-panel { min-width:0; border:1px solid var(--sov-border); border-radius:16px; background:#fff; box-shadow:0 4px 18px rgba(62,32,47,.035); overflow:hidden; }
+#staffOrderView .sov-panel-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:15px 18px; border-bottom:1px solid #f1e8ec; min-width:0; }
+#staffOrderView .sov-panel-heading h2 { margin:0; font-family:inherit; font-size:.96rem; font-weight:750; color:var(--sov-ink); line-height:1.3; }
+#staffOrderView .sov-panel-heading > span { font-size:.72rem; color:var(--sov-muted); white-space:normal; text-align:right; }
+#staffOrderView .sov-overview { padding:19px 18px 20px; }
+#staffOrderView .sov-overview h3 { margin:0 0 16px; font-family:inherit; font-size:1.17rem; line-height:1.3; font-weight:750; overflow-wrap:anywhere; }
+#staffOrderView .sov-overview-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:16px; row-gap:18px; }
+#staffOrderView .sov-overview-grid > div { display:grid; gap:5px; min-width:0; }
+#staffOrderView .sov-overview-grid > div > span { color:var(--sov-muted); font-size:.72rem; }
+#staffOrderView .sov-overview-grid strong { color:#40323b; font-size:.83rem; font-weight:650; line-height:1.4; overflow-wrap:anywhere; }
+#staffOrderView .sov-instructions { display:grid; gap:18px; padding:18px; }
+#staffOrderView .sov-note { min-width:0; }
+#staffOrderView .sov-note > span,#staffOrderView .sov-reference > span { display:block; margin-bottom:7px; color:#765a69; font-size:.75rem; font-weight:750; }
+#staffOrderView .sov-note p { margin:0; color:#42333c; padding:11px 13px; border:1px solid #f0e3e8; border-radius:10px; background:#fffbfc; font-size:.82rem; line-height:1.6; overflow-wrap:anywhere; white-space:normal; }
+#staffOrderView .sov-reference { min-width:0; }
+#staffOrderView .sov-reference a { display:inline-grid; gap:9px; width:min(100%,260px); padding:9px; border:1px solid #e8dce2; border-radius:12px; background:#fff; text-decoration:none; color:#8b3c58; }
+#staffOrderView .sov-reference a:hover { border-color:#d5a9ba; background:#fffafb; }
+#staffOrderView .sov-reference img { display:block; width:100%; height:auto; max-height:230px; object-fit:contain; border-radius:8px; background:#f8f4f5; }
+#staffOrderView .sov-reference-card { display:inline-grid; gap:9px; width:min(100%,260px); padding:9px; border:1px solid #e8dce2; border-radius:12px; background:#fff; color:#8b3c58; }
+#staffOrderView .sov-product-preview { margin-bottom:16px; }
+#staffOrderView .sov-download-link { display:inline-flex; align-items:center; justify-content:center; min-height:36px; margin-top:9px; padding:8px 12px; border:1px solid #dec3ce; border-radius:10px; background:#fff8fa; color:#8b3c58; text-decoration:none; font-size:.75rem; font-weight:700; }
+#staffOrderView .sov-download-link:hover { background:#fff1f5; border-color:#d4a4b6; }
+#staffOrderView .sov-reference small { font-size:.75rem; font-weight:650; }
+#staffOrderView .sov-empty { margin:0; color:var(--sov-muted); font-size:.81rem; line-height:1.5; }
+#staffOrderView .sov-action-content { display:grid; gap:12px; padding:18px; }
+#staffOrderView .sov-task-form,#staffOrderView .sov-reject form { display:grid; gap:9px; min-width:0; margin:0; }
+#staffOrderView .sov-task-form label,#staffOrderView .sov-reject label { color:#5b4b55; font-size:.77rem; font-weight:700; }
+#staffOrderView .sov-task-form label span { font-weight:500; color:#91808a; }
+#staffOrderView :is(select,textarea) { display:block; width:100%; max-width:100%; min-width:0; min-height:41px; margin:0 0 5px; padding:10px 11px; border:1px solid #e5d8de; border-radius:9px; background:#fff; color:#352931; font:inherit; font-size:.8rem; line-height:1.45; }
+#staffOrderView textarea { min-height:72px; resize:vertical; }
+#staffOrderView :is(select,textarea):focus-visible { outline:2px solid #d4a6b7; outline-offset:1px; border-color:#be6787; }
+#staffOrderView .sov-button { display:inline-flex; justify-content:center; align-items:center; gap:7px; min-height:39px; max-width:100%; padding:8px 14px; border:1px solid #ddc3cd; border-radius:9px; background:#fff; color:#883650; font:inherit; font-weight:700; font-size:.78rem; text-align:center; text-decoration:none; cursor:pointer; white-space:normal; line-height:1.35; }
+#staffOrderView .sov-button:hover { background:#fff2f6; border-color:#dbaaba; }
+#staffOrderView .sov-button-primary { width:100%; color:#fff; border-color:#ab4265; background:#ab4265; }
+#staffOrderView .sov-button-primary:hover { color:#fff; background:#943553; border-color:#943553; }
+#staffOrderView .sov-button-secondary { width:100%; }
+#staffOrderView .sov-button:focus-visible,#staffOrderView .sov-back:focus-visible,#staffOrderView summary:focus-visible { outline:2px solid #ac4564; outline-offset:2px; }
+#staffOrderView .sov-action-divider { border-top:1px solid #f0e5e9; margin:3px 0; }
+#staffOrderView .sov-notice { margin:0; color:#6d5863; font-size:.8rem; line-height:1.55; padding:11px 12px; border:1px solid #efdfd6; border-radius:10px; background:#fffaf6; }
+#staffOrderView .sov-reject { border:1px solid #ecdee4; border-radius:10px; padding:0 12px; }
+#staffOrderView .sov-reject summary { list-style:none; color:#854257; cursor:pointer; padding:12px 0; font-size:.78rem; font-weight:650; }
+#staffOrderView .sov-reject summary::-webkit-details-marker { display:none; }
+#staffOrderView .sov-reject summary::after { content:'+'; float:right; }
+#staffOrderView .sov-reject[open] summary::after { content:'−'; }
+#staffOrderView .sov-reject form { padding:0 0 13px; }
+#staffOrderView .sov-history > summary { display:flex; align-items:center; justify-content:space-between; gap:10px; list-style:none; cursor:pointer; padding:15px 18px; font-size:.85rem; font-weight:750; }
+#staffOrderView .sov-history > summary::-webkit-details-marker { display:none; }
+#staffOrderView .sov-history > summary span { color:#95617a; font-size:.73rem; font-weight:650; }
+#staffOrderView .sov-history-body { padding:4px 18px 17px; }
+#staffOrderView .sov-history-entry { padding:11px 0; border-top:1px solid #f0e6eb; overflow-wrap:anywhere; }
+#staffOrderView .sov-history-entry strong { font-size:.77rem; }
+#staffOrderView .sov-history-entry p { margin:6px 0; font-size:.76rem; line-height:1.5; color:#5c4a54; }
+#staffOrderView .sov-history-entry small { font-size:.7rem; color:var(--sov-muted); }
+#staffOrderView .sov-feedback { padding:11px 14px; margin:0 0 14px; border:1px solid; border-radius:11px; font-size:.82rem; }
+#staffOrderView .sov-success { background:#f0faf3; border-color:#d2e8d8; color:#2a6944; }
+#staffOrderView .sov-error { background:#fff5f5; border-color:#efd3d3; color:#963c43; }
+@media (max-width:1000px) {
+  #staffOrderView .sov-layout { grid-template-columns:minmax(0,1fr); }
+  #staffOrderView .sov-side-column { grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start; }
+}
+@media (max-width:660px) {
+  #staffOrderView { padding-bottom:24px; }
+  #staffOrderView .sov-layout,#staffOrderView .sov-main-column,#staffOrderView .sov-side-column { gap:12px; }
+  #staffOrderView .sov-side-column { grid-template-columns:minmax(0,1fr); }
+  #staffOrderView .sov-panel { border-radius:13px; }
+  #staffOrderView .sov-panel-heading { padding:13px 14px; }
+  #staffOrderView .sov-overview,#staffOrderView .sov-instructions,#staffOrderView .sov-action-content { padding:14px; }
+  #staffOrderView .sov-overview-grid { gap:13px; }
+  #staffOrderView .sov-overview h3 { font-size:1.08rem; margin-bottom:13px; }
+  #staffOrderView .sov-stage,#staffOrderView .sov-overdue { font-size:.67rem; }
+}
+@media (max-width:360px) {
+  #staffOrderView .sov-overview-grid { grid-template-columns:minmax(0,1fr); }
+}

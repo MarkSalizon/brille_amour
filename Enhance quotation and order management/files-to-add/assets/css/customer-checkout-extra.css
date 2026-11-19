@@ -1,0 +1,186 @@
+/* Additional checkout polish: delivery schedule, payment icons, and terms modal */
+#portalCheckoutModal .portal-delivery-panel {
+  gap: 11px;
+  padding: 14px;
+  border: 1px solid #f0e1e6;
+  border-radius: 14px;
+  background: #fffafc;
+}
+#portalCheckoutModal .portal-saved-address.is-inline {
+  grid-column: 1 / -1;
+  border-top: 1px dashed #ecd8df;
+  padding-top: 12px;
+}
+#portalCheckoutModal .portal-payment-choice > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 10px 8px;
+}
+#portalCheckoutModal .portal-payment-choice strong {
+  font-size: .79rem;
+  font-weight: 800;
+}
+#portalCheckoutModal .payment-option-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #fff1f5, #ffe6ee);
+  color: #b13155;
+  font-style: normal;
+  font-size: .72rem;
+  font-weight: 900;
+  line-height: 1;
+  box-shadow: inset 0 0 0 1px rgba(199, 60, 98, .12);
+}
+#portalCheckoutModal .portal-inline-link {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--portal-pink-dark, #9e294b);
+  font: inherit;
+  font-weight: 800;
+  text-decoration: underline;
+  cursor: pointer;
+}
+#portalCheckoutModal .portal-terms-hint {
+  margin: 8px 6px 0;
+  color: #8e7781;
+  font-size: .71rem;
+  line-height: 1.45;
+}
+#portalCheckoutModal .portal-terms-hint[hidden] { display: none !important; }
+.portal-terms-modal {
+  width: min(660px, calc(100% - 24px));
+  max-height: min(90dvh, 860px);
+  border: 0;
+  border-radius: 24px;
+  background: transparent;
+}
+.portal-terms-modal::backdrop {
+  background: rgba(41,22,33,.58);
+  backdrop-filter: blur(5px);
+}
+.portal-terms-card {
+  display: grid;
+  gap: 14px;
+  max-height: min(90dvh, 860px);
+  padding: 20px;
+  border: 1px solid #eddce2;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 30px 100px rgba(46,21,32,.26);
+}
+.portal-terms-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+.portal-terms-head h2 {
+  margin: 5px 0 6px;
+  font-size: 1.35rem;
+}
+.portal-terms-head p {
+  margin: 0;
+  color: #826c76;
+  font-size: .79rem;
+  line-height: 1.55;
+}
+.portal-terms-body {
+  overflow: auto;
+  min-height: 240px;
+  max-height: min(52dvh, 460px);
+  padding: 6px 6px 6px 0;
+}
+.portal-terms-body article {
+  padding: 13px 14px;
+  border: 1px solid #f0e2e8;
+  border-radius: 14px;
+  background: #fffafb;
+}
+.portal-terms-body article + article {
+  margin-top: 10px;
+}
+.portal-terms-body h3 {
+  margin: 0 0 6px;
+  color: #392731;
+  font-size: .88rem;
+}
+.portal-terms-body p {
+  margin: 0;
+  color: #6e5662;
+  font-size: .78rem;
+  line-height: 1.55;
+}
+.portal-terms-body p + p { margin-top: 8px; }
+.portal-terms-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-top: 6px;
+}
+.portal-terms-footer small {
+  color: #8e7781;
+  font-size: .72rem;
+}
+.portal-terms-actions {
+  display: flex;
+  gap: 10px;
+}
+.portal-terms-actions .portal-btn {
+  min-height: 43px;
+  border-radius: 12px;
+}
+@media (max-width: 620px) {
+  .portal-terms-card {
+    padding: 14px;
+    border-radius: 18px;
+  }
+  .portal-terms-head {
+    gap: 10px;
+  }
+  .portal-terms-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .portal-terms-actions {
+    width: 100%;
+  }
+  .portal-terms-actions .portal-btn {
+    flex: 1;
+  }
+}
+
+/* Show the published terms inside the review modal, without substituting a short summary. */
+.portal-terms-body .portal-terms-document { display: grid; gap: 10px; }
+.portal-terms-body .portal-terms-document section {
+  padding: 13px 14px;
+  border: 1px solid #f0e2e8;
+  border-radius: 14px;
+  background: #fffafb;
+}
+.portal-terms-body .portal-terms-document h2 {
+  margin: 0 0 7px;
+  color: #392731;
+  font-size: .88rem;
+  line-height: 1.35;
+}
+.portal-terms-body .portal-terms-document p,
+.portal-terms-body .portal-terms-document address {
+  margin: 0;
+  color: #6e5662;
+  font-size: .78rem;
+  font-style: normal;
+  line-height: 1.55;
+}
+.portal-terms-body .portal-terms-document p + p { margin-top: 8px; }
+.portal-terms-body .portal-terms-document a { color: #a12f51; overflow-wrap: anywhere; }
+.portal-terms-body .portal-terms-document address { margin-top: 6px; }
+.portal-terms-body .portal-terms-unavailable { color: #a12f51; font-size: .8rem; }

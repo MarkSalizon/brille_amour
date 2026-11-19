@@ -1,0 +1,26 @@
+/* Staff Production / Quality Check: deliberate acceptance before stage actions. */
+body.ac-body .staff-acceptance-status,
+.staff-production-page .staff-acceptance-status {
+  display:block; grid-column:1 / -1; min-width:0; padding:10px 13px; margin:9px 0;
+  border:1px solid #f0dfe6; border-radius:11px;
+  color:#75445a; background:#fff7fa;
+  font-size:.79rem; line-height:1.5; overflow-wrap:anywhere;
+}
+.staff-production-page .staff-acceptance-status.is-accepted {color:#246749;background:#f0faf3;border-color:#d3eadb}
+.staff-production-page .staff-acceptance-status.is-declined {color:#904b3e;background:#fff8f3;border-color:#f2ddc9}
+.staff-production-page .staff-acceptance-actions {grid-column:1 / -1;display:flex;align-items:center;flex-wrap:wrap;gap:9px;min-width:0;margin-top:11px;padding-top:11px;border-top:1px solid #f3e7eb}
+.staff-production-page .staff-acceptance-actions form {margin:0}
+.staff-production-page .staff-acceptance-actions .btn,
+.staff-production-page .staff-decline-editor > summary {display:inline-flex;align-items:center;justify-content:center;min-height:37px;padding:9px 13px;font-size:.78rem;font-weight:650;line-height:1.35;border-radius:10px;white-space:normal;text-align:center;cursor:pointer}
+.staff-production-page .staff-decline-editor {position:relative;max-width:100%;min-width:0}
+.staff-production-page .staff-decline-editor > summary {list-style:none;border:1px solid #edd5dd;background:#fff;color:#974b63}
+.staff-production-page .staff-decline-editor > summary::-webkit-details-marker {display:none}
+.staff-production-page .staff-decline-editor[open] {flex:1 1 100%;padding:11px;border:1px solid #f1dce4;border-radius:11px;background:#fffbfc}
+.staff-production-page .staff-decline-editor[open] > summary {width:max-content;margin-bottom:10px}
+.staff-production-page .staff-decline-editor form {display:grid;gap:10px;min-width:0}
+.staff-production-page .staff-decline-editor label {display:grid;gap:6px;color:#725363;font-size:.78rem;font-weight:600}
+.staff-production-page .staff-decline-editor textarea {display:block;width:100%;max-width:100%;min-width:0;box-sizing:border-box;padding:10px 12px;border:1px solid #e8d6df;border-radius:9px;font:inherit;line-height:1.45;resize:vertical}
+.staff-production-page .staff-decline-editor button {justify-self:start}
+.staff-production-page .staff-decline-editor summary:focus-visible,
+.staff-production-page .staff-acceptance-actions button:focus-visible {outline:2px solid #b33e62;outline-offset:3px}
+@media(max-width:560px){.staff-production-page .staff-acceptance-actions {align-items:stretch;gap:7px}.staff-production-page .staff-acceptance-actions > form,.staff-production-page .staff-acceptance-actions > form .btn {width:100%}.staff-production-page .staff-acceptance-actions .btn {max-width:100%!important}.staff-production-page .staff-decline-editor[open] {width:100%}}

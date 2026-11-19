@@ -1,0 +1,391 @@
+/* Brille Amour checkout-only Android/iOS responsive patch. */
+/* ============================================================
+   Customer checkout — Android + iOS narrow-screen hardening
+   Mobile-only. Prevent native controls/payment choices from
+   widening the dialog or breaking labels on 320–430px phones.
+   ============================================================ */
+@media (max-width: 620px) {
+  #portalCheckoutModal {
+    position: fixed !important;
+    inset:
+      max(6px, env(safe-area-inset-top, 0px))
+      max(6px, env(safe-area-inset-right, 0px))
+      max(6px, env(safe-area-inset-bottom, 0px))
+      max(6px, env(safe-area-inset-left, 0px)) !important;
+    width: auto !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  #portalCheckoutModal .portal-checkout-modal-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    margin: 0 !important;
+    padding: 12px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 18px !important;
+    box-sizing: border-box !important;
+  }
+
+  #portalCheckoutModal .portal-checkout-modal-card *,
+  #portalCheckoutModal .portal-checkout-section,
+  #portalCheckoutModal .portal-modal-field,
+  #portalCheckoutModal .portal-modal-section-head,
+  #portalCheckoutModal .portal-fulfillment-panel,
+  #portalCheckoutModal .checkout-availability-card,
+  #portalCheckoutModal .portal-total-box,
+  #portalCheckoutModal .portal-payment-options {
+    min-width: 0 !important;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  #portalCheckoutModal .portal-modal-head {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 40px !important;
+    align-items: start !important;
+    gap: 8px !important;
+    top: -12px !important;
+    margin: -12px -12px 10px !important;
+    padding: 13px 12px 12px !important;
+  }
+
+  #portalCheckoutModal .portal-modal-head > div {
+    min-width: 0 !important;
+  }
+
+  #portalCheckoutModal .portal-modal-head h2 {
+    font-size: clamp(1.28rem, 7vw, 1.62rem) !important;
+    line-height: 1.12 !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+  }
+
+  #portalCheckoutModal .checkout-head-caption {
+    font-size: .76rem !important;
+    line-height: 1.4 !important;
+  }
+
+  #portalCheckoutModal .portal-modal-close {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    padding: 0 !important;
+    justify-self: end;
+  }
+
+  #portalCheckoutModal .portal-checkout-section {
+    padding: 12px !important;
+    gap: 10px !important;
+    border-radius: 14px !important;
+  }
+
+  #portalCheckoutModal .portal-modal-section-head {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  #portalCheckoutModal .portal-modal-section-head > div {
+    min-width: 0 !important;
+    flex: 1 1 190px !important;
+  }
+
+  #portalCheckoutModal .portal-modal-section-head > small {
+    max-width: 100% !important;
+    white-space: nowrap !important;
+  }
+
+  /* Native date/time controls have large intrinsic widths on iOS. */
+  #portalCheckoutModal input[type="date"],
+  #portalCheckoutModal input[type="time"],
+  #portalCheckoutModal input[type="text"],
+  #portalCheckoutModal input[type="tel"],
+  #portalCheckoutModal input[type="number"],
+  #portalCheckoutModal select,
+  #portalCheckoutModal textarea {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    inline-size: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #portalCheckoutModal .checkout-schedule-field > input {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    font-size: 16px !important;
+  }
+
+  /* File input: keep both the native button and filename inside the card. */
+  #portalCheckoutModal .portal-modal-field input[type="file"] {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 6px !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+    font-size: .72rem !important;
+    box-sizing: border-box !important;
+  }
+
+  #portalCheckoutModal .portal-modal-field input[type="file"]::file-selector-button,
+  #portalCheckoutModal .portal-modal-field input[type="file"]::-webkit-file-upload-button {
+    max-width: 58% !important;
+    margin-right: 7px !important;
+    padding: 8px 9px !important;
+    border: 1px solid #e2cbd4 !important;
+    border-radius: 9px !important;
+    background: #fff7fa !important;
+    color: #5d3345 !important;
+    font: inherit !important;
+    font-size: .74rem !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+  }
+
+  /* Three choices stay in one compact row without splitting GCash/Maya. */
+  #portalCheckoutModal .portal-payment-options {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 7px !important;
+    width: 100% !important;
+  }
+
+  #portalCheckoutModal .portal-payment-choice,
+  #portalCheckoutModal .portal-payment-choice > span {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  #portalCheckoutModal .portal-payment-choice > span {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    min-height: 72px !important;
+    padding: 8px 4px !important;
+    text-align: center !important;
+  }
+
+  #portalCheckoutModal .payment-option-icon {
+    flex: 0 0 30px !important;
+    width: 30px !important;
+    height: 30px !important;
+    font-size: .72rem !important;
+  }
+
+  #portalCheckoutModal .portal-payment-choice strong {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    font-size: .72rem !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    overflow-wrap: normal !important;
+    word-break: keep-all !important;
+  }
+
+  #portalCheckoutModal .checkout-pay-today {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 12px !important;
+  }
+
+  #portalCheckoutModal .checkout-pay-today > span {
+    min-width: 0 !important;
+    font-size: .78rem !important;
+  }
+
+  #portalCheckoutModal .checkout-pay-today strong {
+    min-width: 0 !important;
+    max-width: 42vw !important;
+    font-size: 1.02rem !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+  }
+
+  #portalCheckoutModal .portal-total-box {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  #portalCheckoutModal .portal-total-box > span {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  #portalCheckoutModal .portal-total-box strong {
+    white-space: nowrap !important;
+    text-align: right !important;
+  }
+
+  #portalCheckoutModal .portal-modal-footer {
+    bottom: -12px !important;
+    margin: 14px -12px -12px !important;
+    padding:
+      10px
+      max(12px, env(safe-area-inset-right, 0px))
+      max(10px, env(safe-area-inset-bottom, 0px))
+      max(12px, env(safe-area-inset-left, 0px)) !important;
+  }
+
+  #portalCheckoutModal .portal-modal-footer .portal-btn {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 46px !important;
+    padding: 10px 12px !important;
+    font-size: .82rem !important;
+    white-space: normal !important;
+  }
+}
+
+@media (max-width: 360px) {
+  #portalCheckoutModal {
+    inset:
+      max(4px, env(safe-area-inset-top, 0px))
+      max(4px, env(safe-area-inset-right, 0px))
+      max(4px, env(safe-area-inset-bottom, 0px))
+      max(4px, env(safe-area-inset-left, 0px)) !important;
+    border-radius: 15px !important;
+  }
+
+  #portalCheckoutModal .portal-checkout-modal-card {
+    padding: 10px !important;
+    border-radius: 15px !important;
+  }
+
+  #portalCheckoutModal .portal-modal-head {
+    top: -10px !important;
+    margin: -10px -10px 9px !important;
+    padding: 12px 10px 11px !important;
+  }
+
+  #portalCheckoutModal .portal-checkout-section {
+    padding: 10px !important;
+  }
+
+  #portalCheckoutModal .portal-payment-options {
+    gap: 5px !important;
+  }
+
+  #portalCheckoutModal .portal-payment-choice > span {
+    min-height: 68px !important;
+    padding: 7px 2px !important;
+  }
+
+  #portalCheckoutModal .portal-payment-choice strong {
+    font-size: .68rem !important;
+  }
+
+  #portalCheckoutModal .payment-option-icon {
+    width: 28px !important;
+    height: 28px !important;
+    flex-basis: 28px !important;
+  }
+
+  #portalCheckoutModal .portal-modal-footer {
+    bottom: -10px !important;
+    margin: 12px -10px -10px !important;
+  }
+}
+
+/* Pickup / delivery schedule fields — phone-safe sizing */
+@media (max-width: 620px) {
+  #portalCheckoutModal .portal-fulfillment-panel {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  #portalCheckoutModal .checkout-schedule-helper,
+  #portalCheckoutModal .checkout-selected-schedule,
+  #portalCheckoutModal .portal-saved-address {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+  }
+
+  #portalCheckoutModal .checkout-schedule-field {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 6px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  #portalCheckoutModal .checkout-schedule-field > span {
+    display: block !important;
+    width: 100% !important;
+    font-size: .78rem !important;
+    line-height: 1.2 !important;
+    font-weight: 800 !important;
+    white-space: normal !important;
+  }
+
+  #portalCheckoutModal .checkout-schedule-field > input[type="date"],
+  #portalCheckoutModal .checkout-schedule-field > input[type="time"] {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    min-height: 48px !important;
+    height: 48px !important;
+    padding: 10px 12px !important;
+    border-radius: 12px !important;
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+    box-sizing: border-box !important;
+    -webkit-appearance: auto !important;
+    appearance: auto !important;
+  }
+
+  #portalCheckoutModal .checkout-schedule-field > small {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    font-size: .68rem !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
+  }
+}
+
+/* Wider phones can keep date + time side-by-side without squeezing controls. */
+@media (min-width: 480px) and (max-width: 620px) {
+  #portalCheckoutModal .portal-fulfillment-panel {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  #portalCheckoutModal .checkout-schedule-helper,
+  #portalCheckoutModal .checkout-selected-schedule,
+  #portalCheckoutModal .portal-saved-address {
+    grid-column: 1 / -1 !important;
+  }
+}

@@ -1,0 +1,27 @@
+/* Address editor belongs to the checkout flow. */
+.portal-edit-address-link { appearance:none; border:1px solid #ead6de; border-radius:9px; background:#fff; color:#a03d60; padding:7px 11px; font:inherit; font-size:.78rem; font-weight:750; cursor:pointer; white-space:nowrap; }
+.portal-edit-address-link:hover, .portal-edit-address-link:focus-visible { background:#fff1f5; border-color:#d5a3b5; outline:2px solid transparent; }
+#portalCheckoutModal .portal-account-summary > .portal-edit-address-link { justify-self:end; }
+.portal-address-modal { box-sizing:border-box; width:min(94vw,500px); max-width:500px; max-height:min(90vh,800px); overflow:auto; padding:0; border:1px solid #ecdce2; border-radius:18px; background:#fff; color:#352732; box-shadow:0 22px 75px rgba(47,25,35,.25); }
+.portal-address-modal::backdrop { background:rgba(34,22,29,.54); backdrop-filter:blur(2px); }
+.portal-address-card { display:grid; gap:19px; padding:24px; min-width:0; }
+.portal-address-head { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+.portal-address-head h2 { margin:5px 0 7px; font-size:1.4rem; line-height:1.2; }
+.portal-address-head p { margin:0; color:#826d78; font-size:.87rem; line-height:1.45; }
+.portal-address-card .portal-modal-field { display:grid; gap:8px; color:#55414e; font-size:.87rem; font-weight:650; }
+.portal-address-card input,
+.portal-address-card textarea { display:block; width:100%; min-width:0; max-width:100%; padding:12px; border:1px solid #e5d0d9; border-radius:11px; font:inherit; line-height:1.5; background:#fff; color:#392732; box-sizing:border-box; }
+.portal-address-card textarea { resize:vertical; }
+.portal-address-card input:focus-visible,
+.portal-address-card textarea:focus-visible { outline:2px solid #c9537c; outline-offset:1px; }
+.portal-address-card .portal-modal-field small { color:#927d87; font-size:.72rem; font-weight:600; }
+.portal-address-actions { display:flex; justify-content:flex-end; flex-wrap:wrap; gap:10px; }
+.portal-address-actions .portal-btn { min-height:42px; border-radius:10px; }
+.portal-address-error { margin:0; padding:10px 12px; border-radius:9px; color:#9c3149; background:#fff0f3; font-size:.85rem; }
+.portal-address-modal [hidden] { display:none !important; }
+.portal-saved-address { display:grid; gap:6px; }
+.portal-saved-address span { color:#8a7580; font-size:.72rem; font-weight:700; }
+.portal-saved-address strong { white-space:pre-line; overflow-wrap:anywhere; }
+.portal-saved-address .portal-edit-address-link { justify-self:start; margin-top:4px; }
+@media(max-width:540px) { .portal-address-card { padding:18px; } .portal-address-actions { display:grid; grid-template-columns:1fr 1fr; } .portal-address-actions .portal-btn { min-width:0; width:100%; } }
+@media(max-width:375px) { #portalCheckoutModal .portal-account-summary > .portal-edit-address-link { grid-column:2; justify-self:start; } }
