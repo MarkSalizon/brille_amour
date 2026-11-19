@@ -1,0 +1,390 @@
+/* ============================================================
+   Brille Amour Staff — stable mobile layout layer
+   Loaded after shared/global responsive CSS on every Staff page.
+   Purpose: remove conflicting widths/heights/offsets and keep
+   320–430px Android/iPhone layouts predictable.
+   Desktop is intentionally untouched.
+   ============================================================ */
+
+@media (max-width: 920px) {
+  body.staff-portal-body {
+    --staff-stable-header: 58px;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  body.staff-portal-body .layout {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    min-height: 100dvh !important;
+  }
+
+  body.staff-portal-body .main-content {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Keep the fixed header predictable after all shared CSS loads. */
+  body.staff-portal-body .topbar {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    left: 0 !important;
+    z-index: 1080 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: var(--staff-stable-header) !important;
+    min-height: var(--staff-stable-header) !important;
+    padding: 8px 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    background: rgba(255,255,255,.98) !important;
+    border-bottom: 1px solid #eadde3 !important;
+    box-shadow: 0 4px 16px rgba(60,34,47,.05) !important;
+  }
+
+  body.staff-portal-body .topbar-left,
+  body.staff-portal-body .topbar-right {
+    display: flex !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    gap: 7px !important;
+  }
+
+  body.staff-portal-body .topbar-left { flex: 1 1 auto !important; }
+  body.staff-portal-body .topbar-right { flex: 0 0 auto !important; }
+
+  body.staff-portal-body .topbar-title {
+    min-width: 0 !important;
+    max-width: min(50vw, 250px) !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: .96rem !important;
+    line-height: 1.15 !important;
+  }
+
+  body.staff-portal-body .nav-toggle {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 0 0 40px !important;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    padding: 0 !important;
+  }
+
+  /* Critical fix: shared footer CSS was resetting top padding to 10–14px. */
+  body.staff-portal-body .page-content {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    min-height: 100dvh !important;
+    margin: 0 !important;
+    padding-top: calc(var(--staff-stable-header) + 12px) !important;
+    padding-right: 10px !important;
+    padding-bottom: calc(22px + env(safe-area-inset-bottom)) !important;
+    padding-left: 10px !important;
+    overflow-x: clip !important;
+  }
+
+  body.staff-portal-body .page-content > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Drawer always lives above content but below the fixed header. */
+  body.staff-portal-body .sidebar {
+    position: fixed !important;
+    top: var(--staff-stable-header) !important;
+    right: auto !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    z-index: 1095 !important;
+    width: min(82vw, 286px) !important;
+    max-width: calc(100vw - 46px) !important;
+    height: calc(100dvh - var(--staff-stable-header)) !important;
+    margin: 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    transform: translateX(-104%) !important;
+  }
+
+  body.staff-portal-body.nav-open .sidebar {
+    transform: translateX(0) !important;
+  }
+
+  body.staff-portal-body .nav-scrim {
+    position: fixed !important;
+    inset: var(--staff-stable-header) 0 0 0 !important;
+    z-index: 1090 !important;
+  }
+
+  /* Never let shared rules create stretched/skinny boxes. */
+  body.staff-portal-body :where(
+    .staff-dashboard-v2,.staff-production-page,.attendance-page,
+    .staff-profile-workspace,.staff-notifications-page,.sov-page,.rv-page,
+    .staff-inventory-page,.staff-page,.page-shell,.page-wrap
+  ) {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  body.staff-portal-body :where(
+    .staff-dash-hero,.attendance-mini-card,.stat-card,.dash-card,
+    .board-toolbar,.kanban-col,.customer-frame,.order-card,
+    .inv-stat,.filter-card,.inv-table-card,.tx-card,
+    .attendance-hero,.attendance-card,.attendance-history,
+    .staff-page-intro,.profile-card,.notification-list-card,
+    .notification-filters,.notifications-toolbar,.sov-panel,.rv-card
+  ) {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    transform: none !important;
+    align-self: stretch !important;
+    box-sizing: border-box !important;
+  }
+
+  body.staff-portal-body :where(
+    .staff-dash-hero,.attendance-mini-card,.stat-card,.dash-card,
+    .board-toolbar,.kanban-col,.customer-frame,.order-card,
+    .inv-stat,.filter-card,.inv-table-card,.tx-card,
+    .attendance-hero,.attendance-card,.attendance-history,
+    .staff-page-intro,.profile-card,.notification-list-card,
+    .notification-filters,.notifications-toolbar,.sov-panel,.rv-card
+  ) > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  body.staff-portal-body :where(h1,h2,h3,h4,p,span,strong,small,label,a,button,td,th) {
+    max-width: 100% !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+  }
+
+  body.staff-portal-body :where(input,select,textarea) {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  body.staff-portal-body :where(.btn,button) {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+  }
+
+  /* Dashboard */
+  body.staff-portal-body .staff-dashboard-v2 .staff-dash-hero {
+    display: grid !important;
+    grid-template-columns: minmax(0,1fr) !important;
+    gap: 12px !important;
+    padding: 14px !important;
+  }
+
+  body.staff-portal-body .staff-dashboard-v2 .hero-actions {
+    display: grid !important;
+    grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+    width: 100% !important;
+    gap: 7px !important;
+  }
+
+  body.staff-portal-body .staff-dashboard-v2 .hero-actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  body.staff-portal-body .attendance-mini-card {
+    display: grid !important;
+    grid-template-columns: minmax(0,1fr) auto !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  body.staff-portal-body .stats-grid,
+  body.staff-portal-body .staff-dashboard-v2 .stats-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  body.staff-portal-body .staff-dashboard-v2 .stat-card {
+    padding: 11px !important;
+  }
+
+  body.staff-portal-body .dash-grid,
+  body.staff-portal-body .staff-dashboard-v2 .dash-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0,1fr) !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  body.staff-portal-body .staff-dashboard-v2 .order-row {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  body.staff-portal-body .quick-actions {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+    gap: 7px !important;
+  }
+
+  /* Production: one predictable column on phones/tablets. */
+  body.staff-portal-body .staff-production-page .kanban-board,
+  body.staff-portal-body .staff-production-page .kanban-board.single-stage,
+  body.staff-portal-body .staff-production-page .kanban-board.two-stage,
+  body.staff-portal-body .staff-production-page .kanban-board.multi-stage {
+    display: grid !important;
+    grid-template-columns: minmax(0,1fr) !important;
+    grid-auto-flow: row !important;
+    grid-auto-columns: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+    gap: 10px !important;
+  }
+
+  body.staff-portal-body .staff-production-page .kanban-col {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  body.staff-portal-body .staff-production-page .card-actions,
+  body.staff-portal-body .staff-production-page .staff-acceptance-actions {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    gap: 6px !important;
+  }
+
+  body.staff-portal-body .staff-production-page .card-actions .btn,
+  body.staff-portal-body .staff-production-page .staff-acceptance-actions .btn {
+    flex: 1 1 120px !important;
+  }
+
+  /* Inventory */
+  body.staff-portal-body.staff-inventory-page .inv-summary {
+    display: grid !important;
+    grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+    gap: 8px !important;
+    width: 100% !important;
+    overflow: visible !important;
+  }
+
+  body.staff-portal-body.staff-inventory-page .inv-stat {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  body.staff-portal-body.staff-inventory-page .staff-inv-filter-form {
+    display: grid !important;
+    grid-template-columns: minmax(0,1fr) !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  body.staff-portal-body.staff-inventory-page :where(.inv-table-wrap,.table-wrap,.table-responsive,.tx-card) {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Attendance */
+  body.staff-portal-body .attendance-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+    width: 100% !important;
+    gap: 8px !important;
+    overflow: visible !important;
+  }
+
+  body.staff-portal-body .attendance-actions {
+    display: grid !important;
+    grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  body.staff-portal-body .attendance-actions form,
+  body.staff-portal-body .attendance-actions .btn {
+    width: 100% !important;
+  }
+
+  /* Profile / notifications / order detail */
+  body.staff-portal-body .staff-profile-workspace .profile-grid,
+  body.staff-portal-body .sov-layout,
+  body.staff-portal-body .rv-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0,1fr) !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  body.staff-portal-body .staff-notifications-page .notification-filters {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  body.staff-portal-body .staff-notifications-page .notification-row {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* Generic modal safety */
+  body.staff-portal-body :where(.modal,.modal-dialog,.modal-content,.dialog,.sheet,.drawer) {
+    width: min(100%, calc(100vw - 18px)) !important;
+    max-width: calc(100vw - 18px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media (max-width: 380px) {
+  body.staff-portal-body .page-content {
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+  }
+
+  body.staff-portal-body .staff-dashboard-v2 .hero-actions,
+  body.staff-portal-body .attendance-actions {
+    grid-template-columns: minmax(0,1fr) !important;
+  }
+
+  body.staff-portal-body .attendance-mini-card {
+    grid-template-columns: minmax(0,1fr) !important;
+  }
+
+  body.staff-portal-body .attendance-mini-card .btn {
+    width: 100% !important;
+  }
+}

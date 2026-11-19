@@ -1,0 +1,14 @@
+/* Sidebar "Production" badge: new orders waiting for this staff member.
+   It uses the exact same .nav-badge look as Messages / Notifications; this file
+   only handles hiding it at zero and a small pulse when a new order arrives. */
+.sidebar .nav-item .nav-badge[data-incoming-orders-badge][hidden] { display: none; }
+.sidebar .nav-item .nav-badge[data-incoming-orders-badge].is-new {
+  animation: baIncomingPulse 1.1s ease-out 3;
+}
+@keyframes baIncomingPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.2); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sidebar .nav-item .nav-badge[data-incoming-orders-badge].is-new { animation: none; }
+}

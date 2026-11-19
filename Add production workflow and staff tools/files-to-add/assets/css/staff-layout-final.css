@@ -1,0 +1,605 @@
+/* ============================================================
+   Brille Amour Staff — final layout normalization
+   Desktop + mobile. Loaded after the shared/global styles and
+   before page-specific final CSS (e.g. Staff Messages).
+   Purpose: keep every Staff card/panel/form aligned and stable.
+   ============================================================ */
+
+body.staff-portal-body {
+  --staff-final-ink: #3b2d35;
+  --staff-final-muted: #826f79;
+  --staff-final-border: #eadde3;
+  --staff-final-soft: #fff8fa;
+  --staff-final-card: #ffffff;
+  --staff-final-rose: #b8476c;
+  --staff-final-shadow: 0 7px 24px rgba(65, 36, 50, .045);
+}
+
+body.staff-portal-body,
+body.staff-portal-body * {
+  box-sizing: border-box;
+}
+
+body.staff-portal-body .main-content,
+body.staff-portal-body .page-content,
+body.staff-portal-body .page-content > *,
+body.staff-portal-body :where(.staff-dashboard-v2,.staff-production-page,.attendance-page,.staff-profile-workspace,.staff-notifications-page,.sov-page,.rv-page) {
+  min-width: 0;
+  max-width: 100%;
+}
+
+body.staff-portal-body .page-content {
+  width: 100%;
+}
+
+body.staff-portal-body .page-content > :not(script):not(style) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body.staff-portal-body :where(
+  .staff-dash-hero,.attendance-mini-card,.stat-card,.dash-card,
+  .board-toolbar,.kanban-col,.customer-frame,.order-card,
+  .inv-stat,.filter-card,.inv-table-card,.tx-card,
+  .attendance-hero,.attendance-card,.attendance-history,
+  .staff-page-intro,.profile-card,
+  .notifications-toolbar,.notification-filters,.notification-list-card,
+  .sov-panel,.rv-card
+) {
+  min-width: 0;
+  border: 1px solid var(--staff-final-border);
+  border-radius: 16px;
+  background: var(--staff-final-card);
+  box-shadow: var(--staff-final-shadow);
+}
+
+body.staff-portal-body :where(
+  .staff-dash-hero,.attendance-mini-card,.stat-card,.dash-card,
+  .board-toolbar,.kanban-col,.customer-frame,.order-card,
+  .inv-stat,.filter-card,.inv-table-card,.tx-card,
+  .attendance-hero,.attendance-card,.attendance-history,
+  .staff-page-intro,.profile-card,
+  .notifications-toolbar,.notification-filters,.notification-list-card,
+  .sov-panel,.rv-card
+) > * {
+  min-width: 0;
+}
+
+body.staff-portal-body :where(h1,h2,h3,h4,p,span,strong,small,label,a,button,td,th) {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+body.staff-portal-body :where(.frame-name,.card-type,.card-due,.card-assigned,.notification-body p,.notification-body strong,.info-value,.sov-value,.rv-meta strong) {
+  overflow-wrap: anywhere;
+}
+
+body.staff-portal-body :where(input,select,textarea,button,.btn) {
+  min-width: 0;
+  max-width: 100%;
+}
+
+body.staff-portal-body :where(input,select,textarea) {
+  border-radius: 10px;
+}
+
+body.staff-portal-body :where(.table-wrap,.table-responsive,.table-container) {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* ---------- Dashboard ---------- */
+body.staff-portal-body .staff-dashboard-v2 {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
+body.staff-portal-body .staff-dashboard-v2 .staff-dash-hero {
+  align-items: center;
+}
+
+body.staff-portal-body .staff-dashboard-v2 .hero-actions {
+  align-items: center;
+}
+
+body.staff-portal-body .staff-dashboard-v2 .stats-grid {
+  align-items: stretch;
+}
+
+body.staff-portal-body .staff-dashboard-v2 .stat-card {
+  height: 100%;
+  margin: 0;
+}
+
+body.staff-portal-body .staff-dashboard-v2 .dash-grid {
+  align-items: stretch;
+}
+
+body.staff-portal-body .staff-dashboard-v2 .dash-card {
+  height: 100%;
+  overflow: hidden;
+}
+
+body.staff-portal-body .staff-dashboard-v2 .dash-card-header {
+  min-height: 54px;
+  align-items: center;
+}
+
+body.staff-portal-body .staff-dashboard-v2 .order-row {
+  width: 100%;
+  min-width: 0;
+}
+
+body.staff-portal-body .staff-dashboard-v2 .order-row > * {
+  min-width: 0;
+}
+
+body.staff-portal-body .staff-dashboard-v2 .order-customer,
+body.staff-portal-body .staff-dashboard-v2 .order-type {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------- Production ---------- */
+body.staff-portal-body .staff-production-page {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
+body.staff-portal-body .staff-production-page .board-toolbar,
+body.staff-portal-body .staff-production-page .board-summary,
+body.staff-portal-body .staff-production-page .kanban-board,
+body.staff-portal-body .staff-production-page .kanban-col,
+body.staff-portal-body .staff-production-page .col-body,
+body.staff-portal-body .staff-production-page .customer-frame,
+body.staff-portal-body .staff-production-page .frame-head,
+body.staff-portal-body .staff-production-page .frame-body,
+body.staff-portal-body .staff-production-page .order-card,
+body.staff-portal-body .staff-production-page .card-actions {
+  min-width: 0 !important;
+  max-width: 100%;
+}
+
+body.staff-portal-body .staff-production-page .customer-frame {
+  width: 100%;
+  overflow: hidden;
+}
+
+body.staff-portal-body .staff-production-page .order-card {
+  width: 100%;
+}
+
+body.staff-portal-body .staff-production-page .card-actions {
+  align-items: center;
+}
+
+body.staff-portal-body .staff-production-page .card-actions .btn,
+body.staff-portal-body .staff-production-page .staff-acceptance-actions .btn {
+  flex: 0 1 auto;
+}
+
+/* ---------- Inventory ---------- */
+body.staff-portal-body.staff-inventory-page .page-content {
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
+body.staff-portal-body.staff-inventory-page .inv-summary {
+  align-items: stretch;
+}
+
+body.staff-portal-body.staff-inventory-page .inv-stat {
+  height: 100%;
+  margin: 0;
+}
+
+body.staff-portal-body.staff-inventory-page .filter-card,
+body.staff-portal-body.staff-inventory-page .inv-table-card,
+body.staff-portal-body.staff-inventory-page .tx-card {
+  width: 100%;
+  overflow: hidden;
+}
+
+body.staff-portal-body.staff-inventory-page .staff-inv-filter-form > * {
+  min-width: 0;
+}
+
+body.staff-portal-body.staff-inventory-page .staff-inv-items-table,
+body.staff-portal-body.staff-inventory-page .tx-card table {
+  width: 100%;
+}
+
+body.staff-portal-body.staff-inventory-page .action-btns {
+  flex-wrap: wrap;
+}
+
+/* ---------- Attendance ---------- */
+body.staff-portal-body .attendance-page {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
+body.staff-portal-body .attendance-grid {
+  align-items: stretch;
+}
+
+body.staff-portal-body .attendance-card {
+  height: 100%;
+  margin: 0;
+}
+
+body.staff-portal-body .attendance-actions {
+  align-items: stretch;
+}
+
+body.staff-portal-body .attendance-actions form {
+  min-width: 0;
+}
+
+body.staff-portal-body .attendance-history {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ---------- Profile ---------- */
+body.staff-portal-body .staff-profile-workspace {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
+body.staff-portal-body .staff-profile-workspace .profile-grid,
+body.staff-portal-body .staff-profile-workspace .profile-grid > div,
+body.staff-portal-body .staff-profile-workspace .profile-card,
+body.staff-portal-body .staff-profile-workspace .form-row,
+body.staff-portal-body .staff-profile-workspace .form-group {
+  min-width: 0;
+}
+
+body.staff-portal-body .staff-profile-workspace .profile-card {
+  width: 100%;
+  overflow: hidden;
+}
+
+body.staff-portal-body .staff-profile-workspace .stats-panel {
+  align-items: stretch;
+}
+
+body.staff-portal-body .staff-profile-workspace .stat-tile {
+  height: 100%;
+}
+
+/* ---------- Notifications ---------- */
+body.staff-portal-body .staff-notifications-page {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
+body.staff-portal-body .staff-notifications-page .notifications-toolbar,
+body.staff-portal-body .staff-notifications-page .notification-filters,
+body.staff-portal-body .staff-notifications-page .notification-list-card,
+body.staff-portal-body .staff-notifications-page .notification-row {
+  min-width: 0;
+  width: 100%;
+}
+
+body.staff-portal-body .staff-notifications-page .notification-row {
+  align-items: flex-start;
+}
+
+body.staff-portal-body .staff-notifications-page .notification-body {
+  min-width: 0;
+}
+
+/* ---------- Order details ---------- */
+body.staff-portal-body .sov-page {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
+body.staff-portal-body .sov-layout,
+body.staff-portal-body .sov-panel,
+body.staff-portal-body .sov-overview,
+body.staff-portal-body .sov-overview-grid,
+body.staff-portal-body .sov-task-form {
+  min-width: 0;
+}
+
+body.staff-portal-body .sov-panel {
+  overflow: hidden;
+}
+
+/* ---------- Receipt verification ---------- */
+body.staff-portal-body .rv-page {
+  width: 100%;
+  max-width: 1160px;
+  margin-inline: auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+body.staff-portal-body .rv-card,
+body.staff-portal-body .rv-search,
+body.staff-portal-body .rv-grid,
+body.staff-portal-body .rv-meta,
+body.staff-portal-body .rv-state-form {
+  min-width: 0;
+}
+
+body.staff-portal-body .rv-meta > div {
+  min-width: 0;
+}
+
+/* ---------- Generic modals/forms on Staff pages ---------- */
+body.staff-portal-body :where(.modal,.modal-dialog,.modal-content,.dialog,.sheet,.drawer) {
+  max-width: min(100%, calc(100vw - 24px));
+}
+
+/* ---------- Desktop ---------- */
+@media (min-width: 921px) {
+  body.staff-portal-body .page-content {
+    padding: 24px 28px 34px;
+  }
+
+  body.staff-portal-body .staff-dashboard-v2 .stats-grid,
+  body.staff-portal-body.staff-inventory-page .inv-summary,
+  body.staff-portal-body .attendance-grid {
+    gap: 14px;
+  }
+
+  body.staff-portal-body .staff-dashboard-v2 .stat-card,
+  body.staff-portal-body.staff-inventory-page .inv-stat,
+  body.staff-portal-body .attendance-card {
+    min-height: 116px;
+  }
+
+  body.staff-portal-body .staff-profile-workspace .profile-grid {
+    align-items: start;
+  }
+}
+
+/* ---------- Tablet + mobile ---------- */
+@media (max-width: 920px) {
+  body.staff-portal-body {
+    overflow-x: clip !important;
+  }
+
+  body.staff-portal-body .page-content {
+    width: 100% !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  body.staff-portal-body .page-content > :not(script):not(style) {
+    width: 100%;
+  }
+
+  body.staff-portal-body :where(
+    .staff-dash-hero,.attendance-mini-card,.stat-card,.dash-card,
+    .board-toolbar,.kanban-col,.customer-frame,.order-card,
+    .inv-stat,.filter-card,.inv-table-card,.tx-card,
+    .attendance-hero,.attendance-card,.attendance-history,
+    .staff-page-intro,.profile-card,
+    .notifications-toolbar,.notification-filters,.notification-list-card,
+    .sov-panel,.rv-card
+  ) {
+    border-radius: 13px !important;
+    transform: none !important;
+  }
+
+  body.staff-portal-body :where(.btn,button) {
+    min-height: 38px;
+  }
+
+  /* Dashboard */
+  body.staff-portal-body .staff-dashboard-v2 .staff-dash-hero {
+    grid-template-columns: minmax(0,1fr) !important;
+    padding: 15px !important;
+  }
+
+  body.staff-portal-body .staff-dashboard-v2 .hero-actions {
+    width: 100%;
+  }
+
+  body.staff-portal-body .staff-dashboard-v2 .stats-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+  }
+
+  body.staff-portal-body .staff-dashboard-v2 .stat-card {
+    min-height: 94px !important;
+  }
+
+  body.staff-portal-body .staff-dashboard-v2 .dash-grid {
+    grid-template-columns: minmax(0,1fr) !important;
+  }
+
+  body.staff-portal-body .staff-dashboard-v2 .dash-card {
+    min-height: 0;
+  }
+
+  /* Inventory */
+  body.staff-portal-body.staff-inventory-page .inv-summary {
+    display: grid !important;
+    grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+    gap: 8px !important;
+    overflow: visible !important;
+  }
+
+  body.staff-portal-body.staff-inventory-page .inv-summary .inv-stat {
+    width: auto !important;
+    min-width: 0 !important;
+    flex: initial !important;
+    min-height: 92px !important;
+  }
+
+  body.staff-portal-body.staff-inventory-page .inv-summary .inv-stat:nth-child(3):last-child {
+    grid-column: 1 / -1;
+  }
+
+  body.staff-portal-body.staff-inventory-page .staff-inv-filter-form {
+    width: 100% !important;
+    grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+  }
+
+  body.staff-portal-body.staff-inventory-page .staff-inv-filter-form .search-wrap {
+    grid-column: 1 / -1 !important;
+  }
+
+  /* Attendance */
+  body.staff-portal-body .attendance-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+    gap: 8px !important;
+    overflow: visible !important;
+  }
+
+  body.staff-portal-body .attendance-grid .attendance-card {
+    width: auto !important;
+    min-width: 0 !important;
+    flex: initial !important;
+    min-height: 96px !important;
+  }
+
+  body.staff-portal-body .attendance-grid .attendance-card:nth-child(3):last-child {
+    grid-column: 1 / -1;
+  }
+
+  /* Production */
+  body.staff-portal-body .staff-production-page .board-toolbar {
+    width: 100%;
+  }
+
+  body.staff-portal-body .staff-production-page .kanban-board,
+  body.staff-portal-body .staff-production-page .kanban-col {
+    width: 100% !important;
+  }
+
+  body.staff-portal-body .staff-production-page .card-actions .btn,
+  body.staff-portal-body .staff-production-page .staff-acceptance-actions .btn {
+    min-width: 0 !important;
+  }
+
+  /* Profile */
+  body.staff-portal-body .staff-profile-workspace .profile-grid {
+    grid-template-columns: minmax(0,1fr) !important;
+  }
+
+  /* Notifications */
+  body.staff-portal-body .staff-notifications-page .notification-filters {
+    width: 100% !important;
+  }
+
+  /* Order detail / receipt */
+  body.staff-portal-body .sov-layout,
+  body.staff-portal-body .rv-grid {
+    grid-template-columns: minmax(0,1fr) !important;
+  }
+
+  body.staff-portal-body .rv-page {
+    padding: 0 !important;
+  }
+
+  body.staff-portal-body .rv-search,
+  body.staff-portal-body .rv-state-form {
+    grid-template-columns: minmax(0,1fr) auto !important;
+  }
+
+  body.staff-portal-body .rv-search input,
+  body.staff-portal-body .rv-state-form input {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  body.staff-portal-body .page-content {
+    padding-left: 9px !important;
+    padding-right: 9px !important;
+  }
+
+  body.staff-portal-body .staff-dashboard-v2 .hero-actions {
+    grid-template-columns: minmax(0,1fr) !important;
+  }
+
+  body.staff-portal-body .staff-dashboard-v2 .order-row {
+    grid-template-columns: minmax(0,1fr) !important;
+  }
+
+  body.staff-portal-body .staff-dashboard-v2 .order-badges-col {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+    max-width: 100% !important;
+    justify-content: flex-start !important;
+  }
+
+  body.staff-portal-body .staff-dashboard-v2 .order-date-col {
+    grid-column: 1 !important;
+  }
+
+  body.staff-portal-body.staff-inventory-page .staff-inv-filter-form {
+    grid-template-columns: minmax(0,1fr) !important;
+  }
+
+  body.staff-portal-body.staff-inventory-page .staff-inv-filter-form > *,
+  body.staff-portal-body.staff-inventory-page .staff-inv-filter-form .search-wrap {
+    grid-column: 1 !important;
+  }
+
+  body.staff-portal-body .attendance-actions {
+    display: grid !important;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+
+  body.staff-portal-body .attendance-actions form,
+  body.staff-portal-body .attendance-actions .btn {
+    width: 100% !important;
+  }
+
+  body.staff-portal-body .staff-profile-workspace .form-row.form-row-2 {
+    grid-template-columns: minmax(0,1fr) !important;
+  }
+
+  body.staff-portal-body .staff-notifications-page .notification-filters {
+    grid-template-columns: minmax(0,1fr) !important;
+  }
+
+  body.staff-portal-body .staff-notifications-page .notification-row {
+    gap: 9px !important;
+  }
+
+  body.staff-portal-body .rv-search,
+  body.staff-portal-body .rv-state-form,
+  body.staff-portal-body .rv-meta {
+    grid-template-columns: minmax(0,1fr) !important;
+  }
+
+  body.staff-portal-body .rv-search > *,
+  body.staff-portal-body .rv-state-form > * {
+    width: 100% !important;
+    grid-column: 1 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body.staff-portal-body .staff-dashboard-v2 .stats-grid,
+  body.staff-portal-body.staff-inventory-page .inv-summary,
+  body.staff-portal-body .attendance-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+  }
+
+  body.staff-portal-body .staff-dashboard-v2 .stat-card,
+  body.staff-portal-body.staff-inventory-page .inv-stat,
+  body.staff-portal-body .attendance-card {
+    padding: 10px !important;
+  }
+
+  body.staff-portal-body .attendance-actions {
+    grid-template-columns: minmax(0,1fr) !important;
+  }
+}

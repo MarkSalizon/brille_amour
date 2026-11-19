@@ -1,0 +1,43 @@
+:root { color-scheme: light; --ink: #382632; --muted: #74636c; --rose: #943d60; }
+* { box-sizing: border-box; }
+body { margin: 0; background: radial-gradient(ellipse at 10% 0%, #f9e1e8, transparent 52%), radial-gradient(ellipse at 100% 70%, #f1e7ef, transparent 48%), #fcf8f5; color: var(--ink); font-family: "Segoe UI", Arial, sans-serif; line-height: 1.6; }
+a { color: inherit; }
+a:focus-visible { outline: 3px solid #943d60; outline-offset: 5px; }
+.portal-shell { width: min(1100px, 100% - 48px); margin: auto; }
+.portal-header { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 28px 0; border-bottom: 1px solid #e9dce1; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand img { width: 52px; height: 52px; object-fit: contain; border-radius: 50%; }
+.brand strong { display: block; font-family: Georgia, serif; font-size: 23px; }
+.brand small { display: block; font-size: 9px; letter-spacing: 2.5px; color: var(--muted); }
+.team-label { border: 1px solid #e2ced7; border-radius: 30px; padding: 7px 15px; font-size: 12px; color: var(--rose); }
+.team-nav { display: flex; flex-wrap: wrap; gap: 8px; }
+.team-nav a { border: 1px solid #e2ced7; border-radius: 30px; padding: 7px 15px; font-size: 12px; color: var(--rose); text-decoration: none; }
+.team-nav a:hover { background: #f8e8ee; }
+.welcome { text-align: center; max-width: 650px; margin: 54px auto 36px; }
+.eyebrow { color: var(--rose); font-size: 10px; font-weight: 700; letter-spacing: 2.5px; }
+h1 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(38px, 5vw, 62px); line-height: 1.13; margin: 18px 0; letter-spacing: -2px; }
+h1 em { color: var(--rose); }
+.welcome > p:last-child { color: var(--muted); max-width: 510px; margin: auto; }
+.portal-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; max-width: 920px; margin: auto; }
+.portal-card { display: flex; flex-direction: column; padding: 32px; border: 1px solid #e8dbe1; border-radius: 22px; background: #fffdfb; box-shadow: 0 12px 36px #59334908; }
+.staff-card { background: #faf6f9; }
+.card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.role-icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: #f8e8ee; color: var(--rose); }
+.staff-card .role-icon { color: #6b537e; background: #eee6f3; }
+.role-icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.role-tag { color: var(--muted); font-size: 10px; letter-spacing: 1.8px; font-weight: 700; }
+h2 { font: 400 29px/1.25 Georgia, serif; margin: 26px 0 10px; }
+.portal-card p { color: var(--muted); font-size: 14px; margin: 0; }
+ul { padding-left: 19px; margin: 24px 0 28px; color: #64535d; font-size: 13px; }
+li { padding-left: 3px; margin: 8px 0; }
+li::marker { color: #b27c93; }
+.portal-button { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: auto; padding: 13px 20px; border-radius: 10px; background: var(--rose); color: white; text-decoration: none; font-size: 14px; font-weight: 600; transition: background .15s ease; }
+.portal-button:hover { background: #77304c; }
+.staff-card .portal-button { background: #665173; }
+.staff-card .portal-button:hover { background: #503e5c; }
+.login-note { margin-top: 12px; text-align: center; font-size: 11px; color: var(--muted); }
+.customer-link { margin: 30px 0 42px; text-align: center; color: var(--muted); font-size: 13px; }
+.customer-link a { color: var(--rose); text-underline-offset: 4px; }
+footer { border-top: 1px solid #e9dce1; text-align: center; padding: 22px 0; font-size: 11px; color: var(--muted); }
+footer span { margin: 0 8px; }
+@media (max-width: 640px) { .portal-shell { width: calc(100% - 32px); } .portal-header { padding: 20px 0; } .brand strong { font-size: 19px; } .brand img { width: 42px; height: 42px; } .team-label { font-size: 10px; padding: 6px 10px; } .welcome { margin-top: 36px; } .portal-options { grid-template-columns: 1fr; } .portal-card { padding: 26px; } .customer-link a { display: inline-block; } }

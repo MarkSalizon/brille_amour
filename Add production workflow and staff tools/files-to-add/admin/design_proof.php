@@ -1,0 +1,9 @@
+<?php
+require_once __DIR__.'/../includes/auth_redirect.php'; startPortalSession('admin'); if(!isset($_SESSION['user_id'])||($_SESSION['role']??'')!=='admin'){header('Location: login.php');exit;}
+require_once '../includes/config.php';require_once '../includes/security.php';require_once '../includes/db.php';require_once '../includes/innovation.php';require_once '../includes/customer_email_notifications.php'; ensureInnovationSchema($conn);
+$id=(int)($_GET['order_id']??$_POST['order_id']??0);$order=$conn->query("SELECT * FROM orders WHERE id=$id LIMIT 1")->fetch_assoc();if(!$order){http_response_code(404);exit('Order not found');}$msg='';$err='';
+if(($_SERVER['REQUEST_METHOD']??'')==='POST'){
+ if(!portalCsrfValid($_POST['portal_csrf_token']??null)){http_response_code(403);$err='Session expired. Refresh the page and try again.';} else {
+ if(empty($_FILES['proof']['name']))$err='Choose a design proof image or PDF.'; else { $ext=strtolower(pathinfo($_FILES['proof']['name'],PATHINFO_EXTENSION)); if(!in_array($ext,['png','jpg','jpeg','webp','pdf'],true))$err='Use PNG, JPG, WEBP or PDF.'; else { $dir=__DIR__.'/../uploads/proofs'; if(!is_dir($dir))mkdir($dir,0775,true);$name='proof_'.$id.'_'.date('YmdHis').'.'.$ext; if(move_uploaded_file($_FILES['proof']['tmp_name'],$dir.'/'.$name)){ $note=trim((string)($_POST['note']??''));$uid=(int)$_SESSION['user_id'];$s=$conn->prepare("INSERT INTO design_proofs(order_id,proof_file,note,status,created_by) VALUES(?,?,?,'pending',?)");$s->bind_param('issi',$id,$name,$note,$uid);$s->execute();$s->close();customerEmailSendOnce($conn,$id,'design-proof-'.$id.'-'.$name,'Design approval needed','A new design proof is ready. Please review it in My Orders and choose Approve Design or Request Changes.');$msg='Design proof sent to the customer.';} else $err='Upload failed.'; } }
+ }
+}

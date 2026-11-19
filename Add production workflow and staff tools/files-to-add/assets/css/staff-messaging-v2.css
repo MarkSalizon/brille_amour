@@ -1,0 +1,752 @@
+/* ============================================================
+   Brille Amour Staff Messages — final desktop + mobile layer
+   Loaded after the shared responsive styles so the messaging
+   workspace remains stable and never blocks the staff shell.
+   ============================================================ */
+
+body.staff-portal-body.staff-messages-page {
+  overflow: hidden !important;
+}
+
+body.staff-portal-body.staff-messages-page .layout {
+  min-height: 100dvh;
+}
+
+body.staff-portal-body.staff-messages-page .sidebar {
+  z-index: 1300 !important;
+  pointer-events: auto !important;
+}
+
+body.staff-portal-body.staff-messages-page .nav-scrim {
+  z-index: 1290 !important;
+}
+
+body.staff-portal-body.staff-messages-page .topbar {
+  position: relative;
+  z-index: 1200 !important;
+}
+
+body.staff-portal-body.staff-messages-page .main-content {
+  position: relative;
+  z-index: 1 !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+
+body.staff-portal-body.staff-messages-page .page-content {
+  display: flex !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+body.staff-portal-body.staff-messages-page .messages-page {
+  position: relative;
+  z-index: 1 !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  pointer-events: auto !important;
+}
+
+body.staff-portal-body.staff-messages-page .messages-shell {
+  display: grid !important;
+  grid-template-columns: minmax(300px, 350px) minmax(0, 1fr) !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  border: 1px solid #eadde3 !important;
+  border-radius: 18px !important;
+  background: #fff !important;
+  box-shadow: 0 12px 34px rgba(67, 38, 50, .08) !important;
+}
+
+body.staff-portal-body.staff-messages-page .inbox-panel,
+body.staff-portal-body.staff-messages-page .conversation-panel {
+  min-width: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  background: #fff !important;
+}
+
+body.staff-portal-body.staff-messages-page .inbox-panel {
+  display: flex !important;
+  flex-direction: column !important;
+  border-right: 1px solid #eee3e7 !important;
+}
+
+body.staff-portal-body.staff-messages-page .conversation-panel {
+  display: grid !important;
+  grid-template-rows: auto minmax(0, 1fr) auto !important;
+}
+
+body.staff-portal-body.staff-messages-page .inbox-head,
+body.staff-portal-body.staff-messages-page .conversation-head {
+  flex: 0 0 auto !important;
+  min-height: 76px !important;
+  padding: 14px 16px !important;
+  border-bottom: 1px solid #eee3e7 !important;
+  background: #fff !important;
+}
+
+body.staff-portal-body.staff-messages-page .inbox-title-block {
+  display: grid !important;
+  gap: 2px !important;
+  min-width: 0 !important;
+}
+
+body.staff-portal-body.staff-messages-page .messages-return-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  width: fit-content !important;
+  margin-bottom: 2px !important;
+  color: #9d4964 !important;
+  font-size: .7rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+}
+
+body.staff-portal-body.staff-messages-page .messages-eyebrow {
+  color: #b0395f !important;
+  font-size: .62rem !important;
+  font-weight: 800 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+}
+
+body.staff-portal-body.staff-messages-page .inbox-head h1 {
+  margin: 0 !important;
+  color: #2d2026 !important;
+  font-size: 1.22rem !important;
+  line-height: 1.12 !important;
+}
+
+body.staff-portal-body.staff-messages-page .inbox-head p {
+  margin: 1px 0 0 !important;
+  color: #8d7882 !important;
+  font-size: .72rem !important;
+  font-weight: 550 !important;
+}
+
+body.staff-portal-body.staff-messages-page .inbox-search {
+  flex: 0 0 auto !important;
+  padding: 10px 12px !important;
+  border-bottom: 1px solid #eee3e7 !important;
+  background: #fff !important;
+}
+
+body.staff-portal-body.staff-messages-page .inbox-search input {
+  width: 100% !important;
+  min-height: 42px !important;
+  padding: 9px 12px !important;
+  border: 1px solid #e8d8df !important;
+  border-radius: 12px !important;
+  background: #fcfafb !important;
+  font-size: .82rem !important;
+  box-shadow: none !important;
+}
+
+body.staff-portal-body.staff-messages-page .inbox-search input:focus {
+  border-color: #cb7e98 !important;
+  outline: 2px solid #f1cfda !important;
+  outline-offset: 1px !important;
+  background: #fff !important;
+}
+
+body.staff-portal-body.staff-messages-page .thread-list {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  padding: 8px !important;
+  overscroll-behavior: contain !important;
+  scrollbar-width: thin;
+}
+
+body.staff-portal-body.staff-messages-page .inbox-thread {
+  display: grid !important;
+  grid-template-columns: 40px minmax(0, 1fr) auto !important;
+  gap: 10px !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 72px !important;
+  margin: 0 0 4px !important;
+  padding: 9px 10px !important;
+  border: 1px solid transparent !important;
+  border-radius: 12px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.staff-portal-body.staff-messages-page .inbox-thread:hover {
+  border-color: #eddee4 !important;
+  background: #fff8fa !important;
+}
+
+body.staff-portal-body.staff-messages-page .inbox-thread.active {
+  border-color: #e5c8d3 !important;
+  background: #fff2f6 !important;
+}
+
+body.staff-portal-body.staff-messages-page .inbox-thread.unread:not(.active) {
+  background: #fff9fb !important;
+}
+
+body.staff-portal-body.staff-messages-page .thread-avatar,
+body.staff-portal-body.staff-messages-page .chat-avatar {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  flex: 0 0 40px !important;
+  border-radius: 12px !important;
+  background: #f8dce6 !important;
+  color: #a53459 !important;
+  font-size: .72rem !important;
+  font-weight: 800 !important;
+}
+
+body.staff-portal-body.staff-messages-page .thread-body,
+body.staff-portal-body.staff-messages-page .thread-top,
+body.staff-portal-body.staff-messages-page .thread-meta {
+  min-width: 0 !important;
+}
+
+body.staff-portal-body.staff-messages-page .thread-top strong {
+  color: #34272d !important;
+  font-size: .82rem !important;
+  font-weight: 750 !important;
+}
+
+body.staff-portal-body.staff-messages-page .thread-top small,
+body.staff-portal-body.staff-messages-page .thread-meta,
+body.staff-portal-body.staff-messages-page .thread-preview {
+  font-size: .67rem !important;
+  line-height: 1.35 !important;
+}
+
+body.staff-portal-body.staff-messages-page .thread-preview {
+  color: #8d7983 !important;
+}
+
+body.staff-portal-body.staff-messages-page .unread-badge {
+  min-width: 20px !important;
+  height: 20px !important;
+  padding: 0 5px !important;
+  border-radius: 999px !important;
+  background: #ba3f66 !important;
+  color: #fff !important;
+  font-size: .65rem !important;
+  font-style: normal !important;
+  font-weight: 800 !important;
+}
+
+body.staff-portal-body.staff-messages-page .conversation-head {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+body.staff-portal-body.staff-messages-page .conversation-title {
+  min-width: 0 !important;
+  flex: 1 1 auto !important;
+}
+
+body.staff-portal-body.staff-messages-page .conversation-title strong {
+  display: block !important;
+  overflow: hidden !important;
+  color: #34272d !important;
+  font-size: .9rem !important;
+  font-weight: 750 !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+body.staff-portal-body.staff-messages-page .conversation-title small {
+  color: #8d7882 !important;
+  font-size: .69rem !important;
+  font-weight: 550 !important;
+}
+
+body.staff-portal-body.staff-messages-page .conversation-actions {
+  position: relative !important;
+  flex: 0 0 auto !important;
+  z-index: 5 !important;
+}
+
+body.staff-portal-body.staff-messages-page .conversation-menu {
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  right: 0 !important;
+  z-index: 50 !important;
+  min-width: 150px !important;
+  padding: 6px !important;
+  border: 1px solid #eadde3 !important;
+  border-radius: 12px !important;
+  background: #fff !important;
+  box-shadow: 0 14px 32px rgba(55, 33, 43, .14) !important;
+}
+
+body.staff-portal-body.staff-messages-page .message-log {
+  min-width: 0 !important;
+  min-height: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  padding: 22px clamp(14px, 2.5vw, 28px) !important;
+  background: linear-gradient(180deg, #fcfafb 0%, #fff 100%) !important;
+  overscroll-behavior: contain !important;
+}
+
+body.staff-portal-body.staff-messages-page .message-row {
+  max-width: min(560px, 78%) !important;
+}
+
+body.staff-portal-body.staff-messages-page .message-bubble {
+  padding: 10px 14px !important;
+  border-radius: 16px 16px 16px 5px !important;
+  font-size: .84rem !important;
+  line-height: 1.5 !important;
+}
+
+body.staff-portal-body.staff-messages-page .message-row.mine .message-bubble {
+  border-radius: 16px 16px 5px 16px !important;
+}
+
+body.staff-portal-body.staff-messages-page .message-composer {
+  position: relative !important;
+  z-index: 3 !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  gap: 9px !important;
+  align-items: end !important;
+  min-width: 0 !important;
+  padding: 11px 13px !important;
+  border-top: 1px solid #eee3e7 !important;
+  background: #fff !important;
+}
+
+body.staff-portal-body.staff-messages-page .message-composer textarea {
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 44px !important;
+  max-height: 120px !important;
+  padding: 11px 13px !important;
+  border: 1px solid #e7d8de !important;
+  border-radius: 14px !important;
+  background: #fcfafb !important;
+  font-size: .83rem !important;
+  line-height: 1.45 !important;
+  resize: none !important;
+}
+
+body.staff-portal-body.staff-messages-page .message-composer > button {
+  min-width: 78px !important;
+  min-height: 44px !important;
+  padding: 0 15px !important;
+  border-radius: 12px !important;
+  font-size: .78rem !important;
+  font-weight: 750 !important;
+}
+
+body.staff-portal-body.staff-messages-page .empty-chat,
+body.staff-portal-body.staff-messages-page .message-empty {
+  color: #8d7882 !important;
+}
+
+@media (min-width: 901px) {
+  body.staff-portal-body.staff-messages-page .main-content {
+    height: 100vh !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .page-content {
+    height: calc(100vh - 64px) !important;
+    padding: 16px 18px 18px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .messages-page,
+  body.staff-portal-body.staff-messages-page .messages-shell {
+    height: 100% !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .conversation-head .back-btn {
+    display: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  body.staff-portal-body.staff-messages-page {
+    --staff-message-top: var(--staff-mobile-header, 56px);
+    min-height: 100dvh !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .topbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1200 !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .main-content {
+    height: 100dvh !important;
+    padding-top: var(--staff-message-top) !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .page-content {
+    height: calc(100dvh - var(--staff-message-top)) !important;
+    padding: 8px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .messages-shell {
+    grid-template-columns: minmax(0, 1fr) !important;
+    height: 100% !important;
+    border-radius: 14px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .inbox-panel,
+  body.staff-portal-body.staff-messages-page .conversation-panel {
+    height: 100% !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .conversation-panel {
+    display: none !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .messages-page.chat-open .inbox-panel {
+    display: none !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .messages-page.chat-open .conversation-panel {
+    display: grid !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .inbox-head {
+    min-height: 68px !important;
+    padding: 9px 11px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .messages-return-link {
+    display: none !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .messages-eyebrow {
+    font-size: .58rem !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .inbox-head h1 {
+    font-size: 1.05rem !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .inbox-search {
+    padding: 8px 9px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .inbox-thread {
+    min-height: 68px !important;
+    padding: 8px 9px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .conversation-head {
+    min-height: 60px !important;
+    padding: 8px 9px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .conversation-head .back-btn {
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    min-width: 40px !important;
+    height: 38px !important;
+    padding: 0 9px !important;
+    border-radius: 10px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .conversation-head .chat-avatar {
+    width: 36px !important;
+    height: 36px !important;
+    flex-basis: 36px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .message-log {
+    padding: 14px 10px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .message-row {
+    max-width: 90% !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .message-composer {
+    padding: 8px !important;
+    padding-bottom: max(8px, env(safe-area-inset-bottom)) !important;
+    gap: 7px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .message-composer textarea {
+    min-height: 42px !important;
+    padding: 10px 11px !important;
+    font-size: 16px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .message-composer > button {
+    min-width: 64px !important;
+    min-height: 42px !important;
+    padding: 0 11px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page.nav-open .sidebar {
+    z-index: 1400 !important;
+    pointer-events: auto !important;
+  }
+
+  body.staff-portal-body.staff-messages-page.nav-open .nav-scrim {
+    z-index: 1390 !important;
+    pointer-events: auto !important;
+  }
+}
+
+@media (max-width: 430px) {
+  body.staff-portal-body.staff-messages-page .page-content {
+    padding: 6px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .messages-shell {
+    border-radius: 12px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .thread-avatar {
+    width: 36px !important;
+    height: 36px !important;
+    flex-basis: 36px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .inbox-thread {
+    grid-template-columns: 36px minmax(0, 1fr) auto !important;
+    gap: 8px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .message-row {
+    max-width: 94% !important;
+  }
+}
+
+@media (max-width: 360px) {
+  body.staff-portal-body.staff-messages-page .conversation-head .chat-avatar {
+    display: none !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .conversation-title strong {
+    font-size: .82rem !important;
+  }
+}
+
+/* ============================================================
+   Staff Messages mobile viewport correction
+   Final override: one header offset only. The shared mobile layer
+   already fixes the topbar; this keeps the inbox/chat fully below it.
+   ============================================================ */
+@media (max-width: 900px) {
+  body.staff-portal-body.staff-messages-page {
+    --staff-message-header: var(--staff-mobile-header, 56px);
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    overflow: hidden !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .main-content {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    padding: var(--staff-message-header) 0 0 !important;
+    overflow: hidden !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .page-content {
+    box-sizing: border-box !important;
+    display: flex !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 7px !important;
+    overflow: hidden !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .messages-page,
+  body.staff-portal-body.staff-messages-page .messages-shell {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: 100% !important;
+    margin: 0 !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .messages-shell {
+    border-radius: 14px !important;
+    overflow: hidden !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .inbox-panel,
+  body.staff-portal-body.staff-messages-page .conversation-panel {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: 100% !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .inbox-panel {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .messages-page.chat-open .inbox-panel {
+    display: none !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .conversation-panel {
+    display: none !important;
+    grid-template-rows: auto minmax(0, 1fr) auto !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .messages-page.chat-open .conversation-panel {
+    display: grid !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .inbox-head {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    display: flex !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    min-height: 62px !important;
+    height: auto !important;
+    padding: 9px 11px 8px !important;
+    overflow: visible !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .inbox-title-block {
+    display: grid !important;
+    gap: 1px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .messages-eyebrow,
+  body.staff-portal-body.staff-messages-page .inbox-head h1,
+  body.staff-portal-body.staff-messages-page .inbox-head p {
+    position: static !important;
+    display: block !important;
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    transform: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .messages-eyebrow {
+    font-size: .56rem !important;
+    line-height: 1.2 !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .inbox-head h1 {
+    margin-top: 2px !important;
+    font-size: 1rem !important;
+    line-height: 1.12 !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .inbox-head p {
+    margin-top: 3px !important;
+    overflow: hidden !important;
+    font-size: .67rem !important;
+    line-height: 1.25 !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .inbox-search {
+    flex: 0 0 auto !important;
+    padding: 7px 9px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .inbox-search input {
+    min-height: 40px !important;
+    height: 40px !important;
+    padding: 8px 11px !important;
+    font-size: 16px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .thread-list {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 6px 7px 10px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body.staff-portal-body.staff-messages-page .inbox-thread {
+    min-height: 62px !important;
+    margin: 0 0 3px !important;
+    padding: 7px 8px !important;
+    border-radius: 11px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .conversation-head {
+    position: relative !important;
+    inset: auto !important;
+    flex: 0 0 auto !important;
+    min-height: 58px !important;
+    padding: 7px 8px !important;
+    transform: none !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .message-log {
+    min-height: 0 !important;
+    height: auto !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body.staff-portal-body.staff-messages-page .message-composer {
+    position: relative !important;
+    inset: auto !important;
+    flex: 0 0 auto !important;
+    padding: 7px 8px max(7px, env(safe-area-inset-bottom)) !important;
+  }
+}
+
+@media (max-width: 430px) {
+  body.staff-portal-body.staff-messages-page .page-content {
+    padding: 5px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .messages-shell {
+    border-radius: 11px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .inbox-head {
+    min-height: 58px !important;
+    padding: 8px 9px 7px !important;
+  }
+
+  body.staff-portal-body.staff-messages-page .inbox-head h1 {
+    font-size: .94rem !important;
+  }
+}
