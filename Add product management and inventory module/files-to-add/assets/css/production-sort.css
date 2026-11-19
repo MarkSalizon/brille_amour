@@ -1,0 +1,146 @@
+/* Brille Amour production sorting controls — shared by Admin and Staff. */
+.production-board-actions {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-width: 0;
+}
+
+.production-sort-control {
+  display: grid;
+  gap: 5px;
+  min-width: 205px;
+  color: #775f6d;
+  font-size: .7rem;
+  font-weight: 700;
+}
+
+.production-sort-control > span:not(.sr-only) {
+  padding-left: 2px;
+}
+
+.production-sort-control select {
+  width: 100%;
+  min-width: 0;
+  height: 42px;
+  padding: 0 35px 0 12px;
+  border: 1px solid #e7d9e0;
+  border-radius: 11px;
+  outline: 0;
+  background-color: #fff;
+  color: #4e3945;
+  font: inherit;
+  font-size: .78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+.production-sort-control select:hover {
+  border-color: #d8b6c4;
+  background: #fffafb;
+}
+
+.production-sort-control select:focus-visible {
+  border-color: #c96788;
+  box-shadow: 0 0 0 3px rgba(199, 60, 98, .09);
+}
+
+.production-sort-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--border, #eadde3);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.production-sort-toolbar > div {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.production-sort-toolbar strong {
+  color: var(--ink, #3f2e38);
+  font-size: .83rem;
+}
+
+.production-sort-toolbar > div > span {
+  color: var(--ink-muted, #806f79);
+  font-size: .72rem;
+}
+
+/* Custom sorting flattens only the visual date sections. The DOM remains in
+   place, so search, live refresh, forms, and drag/drop keep their existing logic. */
+#productionLive .production-sort-zone.is-custom-sorted {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#productionLive .production-sort-zone.is-custom-sorted > .production-date-group {
+  display: contents;
+}
+
+#productionLive .production-sort-zone.is-custom-sorted > .production-date-group[hidden] {
+  display: none !important;
+}
+
+#productionLive .production-sort-zone.is-custom-sorted > .production-date-group > .production-date-heading {
+  display: none !important;
+}
+
+#productionLive .production-sort-zone.is-custom-sorted > .production-date-group > .production-date-orders {
+  display: contents;
+}
+
+#productionLive .production-sort-zone.is-custom-sorted .customer-frame {
+  margin: 0 !important;
+}
+
+@media (max-width: 740px) {
+  .production-board-actions {
+    width: 100%;
+    align-items: stretch;
+  }
+  .production-board-actions .production-search,
+  .production-board-actions .production-sort-control {
+    width: 100%;
+    max-width: none;
+  }
+  .production-sort-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .production-sort-toolbar .production-sort-control {
+    width: 100%;
+  }
+}
+
+@media (max-width: 460px) {
+  .production-sort-control select {
+    height: 40px;
+    font-size: .76rem;
+  }
+  .production-sort-toolbar {
+    padding: 10px;
+  }
+}
+
+.production-sort-control .sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

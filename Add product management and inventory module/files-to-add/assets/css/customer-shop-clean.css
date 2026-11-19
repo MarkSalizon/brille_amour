@@ -1,0 +1,374 @@
+/* Customer Shop: presentation-only cleanup. Checkout and other pages are unchanged. */
+.customer-shop-main .customer-shop-heading {
+  margin-bottom: 18px;
+  align-items: center;
+}
+.customer-shop-main .customer-shop-heading h1 {
+  margin: 0;
+  font-size: clamp(1.85rem, 3vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -.025em;
+}
+.customer-shop-main .portal-shop-toolbar {
+  margin: 0 0 15px;
+  gap: 12px;
+}
+.customer-shop-main .portal-search {
+  min-width: 0;
+  min-height: 46px;
+  border-radius: 12px;
+}
+.customer-shop-main .portal-filter-tabs {
+  min-width: 0;
+}
+.customer-shop-main .portal-filter-tabs button {
+  min-height: 40px;
+  border-radius: 10px;
+}
+.customer-shop-results {
+  display: flex;
+  align-items: center;
+  min-height: 24px;
+  margin: 0 0 12px;
+  color: var(--portal-muted, #79656f);
+  font-size: .78rem;
+  font-weight: 600;
+}
+.customer-shop-main .portal-shop-grid {
+  gap: 16px;
+}
+.customer-shop-main .portal-shop-card {
+  padding: 11px;
+  border-radius: 16px;
+}
+.customer-shop-main .portal-shop-card-body {
+  gap: 7px;
+  padding: 12px 3px 3px;
+}
+.customer-shop-main .portal-shop-card h2 {
+  font-size: 1.04rem;
+  line-height: 1.35;
+}
+.customer-shop-main .portal-shop-card p {
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+.customer-shop-main .portal-product-meta {
+  margin-top: 4px;
+}
+@media (max-width: 620px) {
+  .customer-shop-main .customer-shop-heading {
+    margin-bottom: 15px;
+  }
+  .customer-shop-main .portal-shop-toolbar {
+    margin-bottom: 11px;
+  }
+  .customer-shop-main .portal-shop-grid {
+    gap: 13px;
+  }
+  .customer-shop-main .portal-shop-card {
+    padding: 10px;
+  }
+}
+
+
+/* Shop only: compact, centered e-commerce add-to-cart confirmation. */
+.customer-portal-body[data-commerce-page="shop"] .portal-commerce-toast.is-cart-success {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  display: block;
+  transform: translate(-50%, -50%);
+  width: min(390px, calc(100vw - 28px));
+  max-width: none;
+  padding: 0;
+  border: 1px solid #eedde4;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 25px 75px rgba(51, 27, 39, .23), 0 4px 16px rgba(51, 27, 39, .07);
+  color: #30232a;
+  font-size: .86rem;
+  font-weight: 500;
+  pointer-events: auto;
+  overflow: hidden;
+  animation: shop-cart-confirm-in .22s ease-out both;
+}
+.customer-portal-body[data-commerce-page="shop"] .portal-commerce-toast.is-cart-success[hidden] {
+  display: none !important;
+}
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 56px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f2e7eb;
+  background: #fcfffd;
+}
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-check {
+  display: grid;
+  place-items: center;
+  flex: 0 0 27px;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: #e4f6ed;
+  color: #218653;
+  font-size: .9rem;
+  font-weight: 900;
+}
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-heading > strong {
+  flex: 1;
+  color: #295c40;
+  font-size: .92rem;
+  font-weight: 800;
+}
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-close {
+  display: grid;
+  place-items: center;
+  flex: 0 0 29px;
+  width: 29px;
+  height: 29px;
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #816a75;
+  font: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-close:hover,
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-close:focus-visible {
+  background: #fff0f4;
+  color: #a02d4d;
+}
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 16px 17px;
+}
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-image {
+  display: grid;
+  place-items: center;
+  flex: 0 0 66px;
+  width: 66px;
+  height: 66px;
+  overflow: hidden;
+  border: 1px solid #f1e0e6;
+  border-radius: 11px;
+  background: #fff5f7;
+  color: #a02d4d;
+  font-weight: 800;
+}
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-image .product-sample-image,
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-image .portal-product-fallback {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  border: 0;
+  border-radius: 0;
+  background-size: 500% 400%;
+}
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-details {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-details strong {
+  overflow: hidden;
+  color: #382831;
+  font-size: .91rem;
+  font-weight: 800;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-details > span {
+  color: #886d7b;
+  font-size: .75rem;
+}
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  padding: 12px 16px 16px;
+  border-top: 1px solid #f2e7eb;
+}
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-continue,
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-view {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 8px;
+  border: 1px solid #eddae2;
+  border-radius: 11px;
+  background: #fff;
+  color: #775664;
+  font: inherit;
+  font-size: .78rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-view {
+  border-color: #c73c62;
+  background: #c73c62;
+  color: #fff;
+}
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-continue:hover {
+  background: #fff5f7;
+}
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-view:hover {
+  background: #a82d50;
+}
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-continue:focus-visible,
+.customer-portal-body[data-commerce-page="shop"] .cart-toast-view:focus-visible {
+  outline: 2px solid #c73c62;
+  outline-offset: 3px;
+}
+@keyframes shop-cart-confirm-in {
+  from { opacity: 0; transform: translate(-50%, -47%) scale(.97); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+@media (max-width: 380px) {
+  .customer-portal-body[data-commerce-page="shop"] .cart-toast-item {
+    padding: 12px;
+  }
+  .customer-portal-body[data-commerce-page="shop"] .cart-toast-actions {
+    gap: 7px;
+    padding: 11px 12px 13px;
+  }
+  .customer-portal-body[data-commerce-page="shop"] .cart-toast-continue,
+  .customer-portal-body[data-commerce-page="shop"] .cart-toast-view {
+    min-height: 42px;
+    font-size: .72rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .customer-portal-body[data-commerce-page="shop"] .portal-commerce-toast.is-cart-success {
+    animation: none;
+  }
+}
+
+
+/* Shop Add to Cart: thumbnail flies from its product card into the header cart. */
+.shop-flying-product {
+  position: fixed;
+  z-index: 99999;
+  overflow: hidden;
+  border: 2px solid #fff;
+  border-radius: 15px;
+  background: #fff0f4;
+  box-shadow: 0 10px 30px rgba(126, 38, 65, .24);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+.shop-flying-product > * {
+  display: grid;
+  place-items: center;
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: auto !important;
+  border-radius: 0 !important;
+  background-repeat: no-repeat;
+  background-size: 500% 400%;
+}
+@keyframes shop-cart-arrival {
+  0% { transform: scale(1); }
+  44% { transform: scale(1.13); }
+  100% { transform: scale(1); }
+}
+.portal-primary-nav a.shop-cart-landed,
+.shop-mobile-cart-shortcut.shop-cart-landed {
+  animation: shop-cart-arrival .36s ease-out;
+}
+.shop-mobile-cart-shortcut { display: none; }
+@media (max-width: 860px) {
+  .customer-portal-body[data-commerce-page="shop"] .shop-mobile-cart-shortcut {
+    position: relative;
+    display: grid;
+    place-items: center;
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--portal-line, #eddce2);
+    border-radius: 12px;
+    background: #fff;
+    color: #6d505c;
+    text-decoration: none;
+  }
+  .customer-portal-body[data-commerce-page="shop"] .shop-mobile-cart-shortcut svg {
+    width: 21px;
+    height: 21px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .customer-portal-body[data-commerce-page="shop"] .shop-mobile-cart-shortcut [data-cart-count] {
+    position: absolute;
+    top: -6px;
+    right: -5px;
+    display: grid;
+    place-items: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border: 2px solid #fff;
+    border-radius: 99px;
+    background: #c73c62;
+    color: #fff;
+    font-size: .62rem;
+    font-style: normal;
+    font-weight: 800;
+  }
+  .customer-portal-body[data-commerce-page="shop"] .shop-mobile-cart-shortcut [data-cart-count][hidden] {
+    display: none !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portal-primary-nav a.shop-cart-landed,
+  .shop-mobile-cart-shortcut.shop-cart-landed { animation: none; }
+}
+
+/* Checkout failures: a distinct error notice INSIDE the modal's top layer.
+   Does not re-enable the removed Add to Cart confirmation popup. */
+.customer-portal-body[data-commerce-page="shop"] .portal-checkout-failure-notice {
+  position: fixed;
+  top: max(18px, env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: min(460px, calc(100vw - 26px));
+  max-height: min(42vh, 320px);
+  overflow-y: auto;
+  padding: 16px;
+  border: 1px solid #e5adbb;
+  border-radius: 15px;
+  background: #fff8fa;
+  color: #7a253f;
+  box-shadow: 0 14px 45px rgba(68, 23, 39, .22);
+  box-sizing: border-box;
+}
+.customer-portal-body[data-commerce-page="shop"] .portal-checkout-failure-notice[hidden] { display: none !important; }
+.customer-portal-body[data-commerce-page="shop"] .portal-checkout-failure-copy { min-width: 0; flex: 1; }
+.customer-portal-body[data-commerce-page="shop"] .portal-checkout-failure-heading { display: block; margin-bottom: 5px; font-size: .95rem; font-weight: 750; }
+.customer-portal-body[data-commerce-page="shop"] .portal-checkout-failure-detail { margin: 0; font-size: .82rem; font-weight: 500; line-height: 1.5; overflow-wrap: anywhere; }
+.customer-portal-body[data-commerce-page="shop"] .portal-checkout-failure-close { flex: 0 0 auto; display: grid; place-items: center; width: 27px; height: 27px; padding: 0; border: 0; border-radius: 7px; background: transparent; color: #7a253f; font: inherit; font-size: 1.35rem; cursor: pointer; }
+.customer-portal-body[data-commerce-page="shop"] .portal-checkout-failure-close:hover { background: #f9e7ec; }

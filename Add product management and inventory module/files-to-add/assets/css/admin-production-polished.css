@@ -1,0 +1,904 @@
+/* Admin Production Progress — visual layer only. Workflow and role checks remain server-side. */
+.production-page.admin-production-polished {
+  --ap-ink: #382b33;
+  --ap-muted: #806b76;
+  --ap-line: #eadce2;
+  --ap-rose: #bb3b62;
+  min-width: 0;
+  width: 100%;
+  padding-bottom: 24px;
+}
+.production-page.admin-production-polished *,
+.production-page.admin-production-polished *::before,
+.production-page.admin-production-polished *::after { box-sizing: border-box; }
+.production-page .board-toolbar {
+  align-items: center;
+  gap: 16px 24px;
+  margin: 0 0 18px;
+  padding: 0;
+}
+.production-page .board-toolbar-left { flex: 1 1 320px; min-width: 0; }
+.production-page .board-toolbar-left h1 {
+  margin: 0 0 5px;
+  color: var(--ap-ink);
+  font-family: inherit;
+  font-size: clamp(1.36rem, 2.1vw, 1.8rem);
+  font-weight: 800;
+  letter-spacing: -.035em;
+  line-height: 1.2;
+}
+.production-page .board-toolbar-left p {
+  margin: 0;
+  color: var(--ap-muted);
+  font-size: .85rem;
+  line-height: 1.5;
+}
+.production-page .board-summary { align-items: center; gap: 10px; }
+.production-page .board-summary-pill { display: none; }
+.production-page .board-live-pill {
+  min-height: 40px;
+  padding: 0 15px;
+  border: 1px solid var(--ap-line);
+  border-radius: 11px;
+  background: #fff;
+  color: #66515d;
+  font-size: .78rem;
+  font-weight: 700;
+  box-shadow: 0 2px 7px rgba(72, 33, 50, .03);
+}
+.production-page .board-live-pill:hover { border-color: #d59cab; background: #fffafd; }
+.production-page .board-live-pill:focus-visible,
+.production-page .stage-tab:focus-visible,
+.production-page .production-search input:focus-visible,
+.production-page .customer-frame > .frame-head:focus-visible {
+  outline: 2px solid #bf4b70;
+  outline-offset: 2px;
+}
+.production-page .board-live-pill .live-pill-dot {
+  width: 7px;
+  height: 7px;
+  background: #a68b98;
+  box-shadow: none;
+  animation: none;
+}
+.production-page .board-live-pill[data-state="syncing"] .live-pill-dot { background: #c9984f; }
+.production-page .board-live-pill[data-state="offline"] .live-pill-dot { background: #cc465e; }
+.production-page .production-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 12px;
+  margin: 0 0 22px;
+}
+.production-page .production-metric {
+  min-width: 0;
+  min-height: 114px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 17px 19px;
+  border: 1px solid var(--ap-line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(61, 32, 45, .035);
+}
+.production-page .production-metric.is-primary {
+  border-color: #e9cad5;
+  background: #fff6f9;
+}
+.production-page .production-metric-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.production-page .production-metric-label {
+  min-width: 0;
+  color: #796671;
+  font-size: .77rem;
+  font-weight: 650;
+  line-height: 1.35;
+}
+.production-page .production-metric-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #f0dfe5;
+  border-radius: 10px;
+  background: #fff7fa;
+  color: #b33b60;
+}
+.production-page .production-metric-icon svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.production-page .production-metric-value {
+  color: var(--ap-ink);
+  font-size: clamp(1.65rem, 3vw, 2.05rem);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.04em;
+  line-height: 1;
+}
+.production-page .production-metric[data-metric="overdue"] .production-metric-value.has-overdue { color: #b33247; }
+.production-page .production-board-shell {
+  min-width: 0;
+  border: 1px solid var(--ap-line);
+  border-radius: 18px;
+  background: #fff;
+  padding: 18px;
+  box-shadow: 0 8px 24px rgba(61, 32, 45, .034);
+}
+.production-page .production-board-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-bottom: 16px;
+}
+.production-page .production-board-heading h2 {
+  margin: 0 0 3px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--ap-ink);
+}
+.production-page .production-board-heading p {
+  margin: 0;
+  color: var(--ap-muted);
+  font-size: .75rem;
+  line-height: 1.45;
+}
+.production-page .production-search {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  width: min(100%, 300px);
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid #e7d9e0;
+  border-radius: 11px;
+  background: #fff;
+  color: #987786;
+}
+.production-page .production-search svg {
+  flex: 0 0 17px;
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.production-page .production-search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ap-ink);
+  font: inherit;
+  font-size: .79rem;
+}
+.production-page .production-search:focus-within { border-color: #c96788; box-shadow: 0 0 0 3px rgba(199, 60, 98, .09); }
+.production-page .production-search input::placeholder { color: #9e8d95; }
+/* Stage tabs remain connected to the existing live board stage-filter handler. */
+.production-page #productionLive .board-stage-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  overflow: visible;
+  margin: 0 0 16px;
+  padding: 0 0 13px;
+  border-bottom: 1px solid #f1e9ed;
+}
+.production-page #productionLive .stage-tab {
+  min-height: 36px;
+  gap: 7px;
+  padding: 0 13px;
+  border: 1px solid #eadde3;
+  border-radius: 9px;
+  background: #fff;
+  color: #715d69;
+  font: inherit;
+  font-size: .77rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.production-page #productionLive .stage-tab-dot { width: 7px; height: 7px; }
+.production-page #productionLive .stage-tab.is-active {
+  border-color: #d796a9;
+  background: #fff1f6;
+  color: #aa3456;
+}
+.production-page #productionLive .stage-tab em {
+  border-radius: 7px;
+  background: #f5eff2;
+  color: #806c77;
+  font-size: .69rem;
+  font-variant-numeric: tabular-nums;
+}
+.production-page #productionLive .kanban-col.is-filtered-out { display: none !important; }
+.production-page #productionLive .kanban-board.two-stage {
+  display: grid !important;
+  grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+  align-items: start !important;
+  gap: 14px !important;
+}
+.production-page #productionLive .kanban-board.two-stage:has(.kanban-col.is-filtered-out) {
+  grid-template-columns: minmax(0,1fr) !important;
+}
+.production-page #productionLive .kanban-col {
+  min-width: 0;
+  border: 1px solid #e9dce2;
+  border-radius: 14px;
+  background: #fcf9fa;
+  overflow: hidden;
+  box-shadow: none;
+}
+.production-page #productionLive .col-header {
+  min-height: 58px;
+  gap: 10px;
+  padding: 14px 16px;
+  border-top: 0 !important;
+  border-bottom: 1px solid #eee2e8;
+  background: #fff;
+}
+.production-page #productionLive .col-dot { width: 9px; height: 9px; }
+.production-page #productionLive .col-label {
+  color: var(--ap-ink);
+  font-size: .9rem;
+  font-weight: 800;
+}
+.production-page #productionLive .col-count {
+  min-width: 27px;
+  min-height: 24px;
+  display: grid;
+  place-items: center;
+  padding: 2px 8px;
+  border-radius: 8px;
+  background: #fcecf2 !important;
+  color: #ae365b;
+  font-size: .73rem;
+  font-variant-numeric: tabular-nums;
+}
+.production-page #productionLive .col-owner {
+  gap: 7px;
+  min-height: 34px;
+  padding: 8px 16px;
+  border-bottom: 1px solid #f1e7eb;
+  background: #fff;
+  color: #887481;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
+}
+.production-page #productionLive .col-owner > span[aria-hidden] { font-size: .85rem; }
+.production-page #productionLive .col-body {
+  min-width: 0;
+  min-height: 240px !important;
+  padding: 13px;
+  gap: 13px;
+  background: #fcf9fa;
+}
+.production-page #productionLive .production-date-group { gap: 8px; }
+.production-page #productionLive .production-date-group + .production-date-group { margin-top: 4px; }
+.production-page #productionLive .production-date-heading {
+  padding: 0 1px;
+  color: #8b7680;
+  font-size: .71rem;
+  font-weight: 700;
+}
+.production-page #productionLive .production-date-orders { gap: 10px; }
+.production-page #productionLive .customer-frame {
+  min-width: 0;
+  border: 1px solid #eadce2;
+  border-left: 1px solid #eadce2;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 3px 13px rgba(61,32,45,.035);
+}
+.production-page #productionLive .customer-frame.overdue { border-color: #e9abb4; background: #fffafa; }
+.production-page #productionLive .customer-frame > .frame-head {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  width: 100%;
+  gap: 9px;
+  padding: 13px 14px;
+  cursor: pointer;
+  background: #fff;
+}
+.production-page #productionLive .customer-frame > .frame-head::after {
+  content: '';
+  flex: 0 0 7px;
+  width: 7px;
+  height: 7px;
+  margin: -3px 3px 0 auto;
+  border-right: 1.7px solid #987c89;
+  border-bottom: 1.7px solid #987c89;
+  transform: rotate(45deg);
+  transition: transform .16s ease;
+}
+.production-page #productionLive .customer-frame[open] > .frame-head::after { transform: rotate(225deg); margin-top: 3px; }
+.production-page #productionLive .frame-info { width: 100%; min-width: 0; }
+.production-page #productionLive .frame-title { gap: 7px; }
+.production-page #productionLive .frame-name {
+  color: #402f3a;
+  font-size: .89rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.production-page #productionLive .frame-count {
+  min-width: 23px;
+  min-height: 22px;
+  border-radius: 7px;
+  background: #fcecf2;
+  color: #ad3558;
+  font-size: .68rem;
+}
+.production-page #productionLive .frame-stats,
+.production-page #productionLive .frame-details {
+  display: flex;
+  align-items: center;
+  gap: 4px 11px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+  font-size: .71rem;
+  line-height: 1.4;
+  color: #8a7480;
+}
+.production-page #productionLive .frame-stats > span,
+.production-page #productionLive .frame-details > span {
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+.production-page #productionLive .frame-contact { overflow-wrap: anywhere; }
+.production-page #productionLive .frame-due::before { content: 'Due '; font-size: .67rem; }
+.production-page #productionLive .frame-body {
+  padding: 12px;
+  gap: 9px;
+  border-top: 1px solid #f0e4e9;
+  background: #fffafb;
+}
+.production-page #productionLive .frame-batch { font-size: .68rem; }
+.production-page #productionLive .order-card {
+  display: flex !important;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+  padding: 12px 13px !important;
+  border: 1px solid #ecdee4;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: none;
+}
+.production-page #productionLive .order-card::before { display: none; }
+.production-page #productionLive .order-card:hover { transform: none; border-color: #d8b9c6; }
+.production-page #productionLive .order-card.overdue { border-color: #eeb5bf; background: #fffafa; }
+.production-page #productionLive .card-top { margin: 0; }
+.production-page #productionLive .card-order-num {
+  color: #a33157;
+  font-family: inherit;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .01em;
+}
+.production-page #productionLive .card-created { margin: 0; color: #98838d; font-size: .69rem; font-weight: 500; }
+.production-page #productionLive .card-type {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 5px 10px;
+  margin: 0;
+}
+.production-page #productionLive .card-product { color: #47323f; font-size: .84rem; font-weight: 750; }
+.production-page #productionLive .card-qty {
+  flex: 0 0 auto;
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: #f8f2f5;
+  color: #755f6b;
+  font-size: .68rem;
+}
+.production-page #productionLive .card-due,
+.production-page #productionLive .card-assigned { margin: 0; color: #816d79; font-size: .73rem; }
+.production-page #productionLive .card-actions {
+  position: static;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  margin: 3px 0 0;
+  padding: 10px 0 0;
+  border-top: 1px solid #f1e8ec;
+  background: transparent;
+}
+.production-page #productionLive .card-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 35px;
+  max-width: 100%;
+  padding: 7px 11px !important;
+  border-radius: 8px;
+  font-size: .72rem !important;
+  font-weight: 750;
+  line-height: 1.35 !important;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.production-page #productionLive .card-actions .btn-ghost { border: 1px solid #e8d8df; background: #fff; color: #79515f; }
+.production-page #productionLive .card-actions .btn-ghost:hover { background: #fff0f5; }
+.production-page #productionLive .card-actions .production-queue-chip { max-width: 100%; overflow-wrap: anywhere; }
+.production-page #productionLive .col-empty {
+  display: grid;
+  place-items: center;
+  min-height: 150px;
+  padding: 22px;
+  color: #95808a;
+  font-size: .79rem;
+}
+.production-page #productionLive .production-search-empty {
+  padding: 22px 12px;
+  border: 1px dashed #e8d9e0;
+  border-radius: 10px;
+  background: #fff;
+  color: #927b87;
+  text-align: center;
+  font-size: .76rem;
+}
+.production-page #productionLive .customer-frame[hidden],
+.production-page #productionLive .production-date-group[hidden],
+.production-page #productionLive .production-search-empty[hidden] { display: none !important; }
+.production-page #completedTodayWrap > .card {
+  margin-top: 18px !important;
+  border: 1px solid var(--ap-line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(61,32,45,.03);
+  overflow: hidden;
+}
+.production-page #completedTodayWrap .card-header {
+  padding: 15px 18px;
+  border-bottom: 1px solid #f0e5ea;
+  background: #fff;
+}
+.production-page #completedTodayWrap .card-title { color: var(--ap-ink); font-size: .94rem; font-weight: 800; }
+.production-page #completedTodayWrap .table-wrap { overflow-x: auto; }
+.production-page #completedTodayWrap table { width: 100%; min-width: 530px; }
+.production-page #completedTodayWrap th { color: #856d7a; font-size: .7rem; font-weight: 750; }
+.production-page #completedTodayWrap td { color: #5f4856; font-size: .78rem; }
+@media (max-width: 1050px) {
+  .production-page .production-metrics { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 740px) {
+  .production-page .production-board-shell { padding: 13px; border-radius: 14px; }
+  .production-page #productionLive .kanban-board.two-stage { grid-template-columns: minmax(0,1fr) !important; }
+  .production-page .production-search { width: 100%; }
+  .production-page .production-board-heading { width: 100%; }
+  .production-page #productionLive .col-body { min-height: 170px !important; }
+}
+@media (max-width: 460px) {
+  .production-page .production-metrics { gap: 9px; }
+  .production-page .production-metric { min-height: 98px; padding: 12px; border-radius: 12px; }
+  .production-page .production-metric-label { font-size: .7rem; }
+  .production-page .production-metric-icon { flex-basis: 28px; width: 28px; height: 28px; }
+  .production-page .production-metric-value { font-size: 1.65rem; }
+  .production-page #productionLive .board-stage-tabs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 12px; }
+  .production-page #productionLive .stage-tab { flex: 0 0 auto; }
+  .production-page #productionLive .col-header { padding: 12px; }
+  .production-page #productionLive .col-body { padding: 9px; }
+  .production-page #productionLive .customer-frame > .frame-head { padding: 11px; }
+  .production-page #productionLive .frame-body { padding: 9px; }
+  .production-page #productionLive .card-actions .btn { flex: 1 1 auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .production-page #productionLive .customer-frame > .frame-head::after { transition: none; }
+}
+
+/* Icon-free Production Progress summary. */
+.production-page .production-metric { min-height: 103px; }
+.production-page .production-metric-top { justify-content: flex-start; }
+
+
+/* Admin production — independent compact order cards, aligned with Staff cards. */
+.production-page.admin-production-polished #productionLive .production-date-orders {
+  display:grid !important;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr));
+  gap:10px !important;
+  align-items:start;
+}
+.production-page.admin-production-polished #productionLive .customer-frame {
+  display:block !important;
+  width:100%;min-width:0;margin:0;padding:0;
+  border:1px solid #eadce2 !important;border-radius:12px;background:#fff;
+  box-shadow:0 3px 13px rgba(61,32,45,.04);overflow:hidden;
+}
+.production-page.admin-production-polished #productionLive .customer-frame > .frame-head {display:none !important;}
+.production-page.admin-production-polished #productionLive .customer-frame > .frame-body {
+  display:block !important;min-width:0;max-height:none !important;overflow:visible !important;
+  padding:0 !important;border:0;background:#fff;
+}
+.production-page.admin-production-polished #productionLive .order-card {
+  display:block !important;min-width:0;width:100%;padding:0 !important;
+  margin:0 !important;border:0 !important;border-radius:0 !important;
+  background:transparent !important;box-shadow:none !important;
+}
+.production-page.admin-production-polished #productionLive .order-card::before {display:none !important;content:none !important;}
+.production-page.admin-production-polished #productionLive .admin-order-layout {
+  display:grid;grid-template-columns:62px minmax(0,1fr);gap:12px;align-items:start;
+  padding:12px 12px 10px;min-width:0;
+}
+.production-page.admin-production-polished #productionLive .admin-order-thumb {
+  display:grid;place-items:center;width:62px;height:62px;overflow:hidden;
+  border-radius:9px;border:1px solid #eadce2;background:#f8f0f3;
+}
+.production-page.admin-production-polished #productionLive .admin-order-thumb img {display:block;width:100%;height:100%;object-fit:cover;}
+.production-page.admin-production-polished #productionLive .admin-order-thumb span {color:#a35a70;font-size:.92rem;font-weight:800;}
+.production-page.admin-production-polished #productionLive .admin-order-summary {display:grid;gap:3px;min-width:0;}
+.production-page.admin-production-polished #productionLive .admin-order-summary .card-top,
+.production-page.admin-production-polished #productionLive .admin-order-summary .card-type {
+  display:block !important;margin:0 !important;padding:0 !important;border:0 !important;
+  grid-column:auto !important;grid-row:auto !important;min-width:0;
+}
+.production-page.admin-production-polished #productionLive .admin-order-summary .card-order-num {
+  font-family:inherit;color:#867681;font-size:.7rem;font-weight:600;white-space:normal;
+  overflow-wrap:anywhere;text-overflow:clip;
+}
+.production-page.admin-production-polished #productionLive .admin-order-customer {
+  display:block;color:#342832;font-size:.81rem;line-height:1.3;font-weight:760;overflow-wrap:anywhere;
+}
+.production-page.admin-production-polished #productionLive .admin-order-summary .card-product {
+  color:#4b3643;font-size:.77rem;font-weight:650;line-height:1.3;white-space:normal !important;
+  overflow-wrap:anywhere;text-overflow:clip;
+}
+.production-page.admin-production-polished #productionLive .admin-order-meta {display:flex;flex-wrap:wrap;gap:2px 9px;min-width:0;}
+.production-page.admin-production-polished #productionLive .admin-order-meta .card-qty,
+.production-page.admin-production-polished #productionLive .admin-order-meta .card-due {
+  display:inline !important;flex:0 1 auto;margin:0 !important;padding:0 !important;border:0;
+  color:#786872;background:transparent;font-size:.7rem;line-height:1.4;
+  text-align:left;white-space:normal !important;overflow-wrap:anywhere;
+}
+.production-page.admin-production-polished #productionLive .admin-order-updated {
+  padding:7px 12px 0 !important;margin:0 !important;border-top:1px solid #f1e8ec;
+  color:#897783;font-size:.67rem;font-weight:550;line-height:1.4;
+}
+.production-page.admin-production-polished #productionLive .order-card .card-actions {
+  display:flex !important;flex-wrap:wrap;justify-content:flex-start;align-items:center;
+  gap:5px !important;min-width:0;width:100%;margin:0 !important;
+  padding:7px 12px 10px !important;border-top:0 !important;background:transparent;
+}
+.production-page.admin-production-polished #productionLive .order-card .card-actions .btn {
+  min-height:31px !important;padding:5px 9px !important;border-radius:7px;
+  font-size:.69rem !important;line-height:1.25 !important;white-space:normal !important;
+}
+.production-page.admin-production-polished #productionLive .order-card .card-actions form {width:auto;min-width:0;}
+@media(max-width:420px) {
+  .production-page.admin-production-polished #productionLive .admin-order-layout {
+    grid-template-columns:54px minmax(0,1fr);gap:10px;padding:11px 10px 9px;
+  }
+  .production-page.admin-production-polished #productionLive .admin-order-thumb {width:54px;height:54px;}
+  .production-page.admin-production-polished #productionLive .order-card .card-actions {padding-inline:10px !important;}
+  .production-page.admin-production-polished #productionLive .admin-order-updated {padding-inline:10px !important;}
+}
+
+/* Admin Production Tracker: let the visible stage containers use the whole board width.
+   auto-fit collapses hidden/filtered tracks, so one visible stage fills 100%,
+   two stages split the board evenly, and Delivery can use three equal columns. */
+@media (min-width: 741px) {
+  .production-page.admin-production-polished #productionLive .kanban-board.two-stage,
+  .production-page.admin-production-polished #productionLive .kanban-board.multi-stage {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    gap: 14px !important;
+    align-items: stretch !important;
+  }
+
+  .production-page.admin-production-polished #productionLive .kanban-board.two-stage > .kanban-col,
+  .production-page.admin-production-polished #productionLive .kanban-board.multi-stage > .kanban-col {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 740px) {
+  .production-page.admin-production-polished #productionLive .kanban-board.two-stage,
+  .production-page.admin-production-polished #productionLive .kanban-board.multi-stage {
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: 100% !important;
+  }
+}
+
+/* ============================================================
+   Admin Production Tracker — uniform horizontal order rows
+   Pending, Ready and Out for Delivery all use the same compact
+   full-width order presentation as the staff production cards.
+   ============================================================ */
+.production-page.admin-production-polished #productionLive .production-date-orders {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 10px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.production-page.admin-production-polished #productionLive .customer-frame {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  border-radius: 14px !important;
+}
+
+.production-page.admin-production-polished #productionLive .order-card {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  grid-template-rows: auto auto !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.production-page.admin-production-polished #productionLive .admin-order-layout {
+  grid-column: 1 / -1 !important;
+  grid-row: 1 !important;
+  display: grid !important;
+  grid-template-columns: 62px minmax(0, 1fr) !important;
+  gap: 12px !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  padding: 11px 12px 10px !important;
+}
+
+.production-page.admin-production-polished #productionLive .admin-order-thumb {
+  width: 62px !important;
+  height: 62px !important;
+  flex: 0 0 62px !important;
+}
+
+.production-page.admin-production-polished #productionLive .admin-order-summary {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 2px !important;
+  min-width: 0 !important;
+  align-content: center !important;
+}
+
+.production-page.admin-production-polished #productionLive .admin-order-customer {
+  font-size: .8rem !important;
+  line-height: 1.25 !important;
+}
+
+.production-page.admin-production-polished #productionLive .admin-order-summary .card-product {
+  font-size: .78rem !important;
+}
+
+.production-page.admin-production-polished #productionLive .admin-order-meta {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 2px 10px !important;
+}
+
+/* Bottom row: updated time left, controls right — same rhythm for every stage. */
+.production-page.admin-production-polished #productionLive .admin-order-updated {
+  grid-column: 1 !important;
+  grid-row: 2 !important;
+  align-self: stretch !important;
+  display: flex !important;
+  align-items: center !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 8px 12px 10px !important;
+  border-top: 1px solid #f1e8ec !important;
+  color: #897783 !important;
+  font-size: .67rem !important;
+  white-space: nowrap !important;
+}
+
+.production-page.admin-production-polished #productionLive .order-card .card-actions,
+.production-page.admin-production-polished #productionLive .order-card .card-actions.view-only {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  align-self: stretch !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  width: auto !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 7px 10px 9px 8px !important;
+  border-top: 1px solid #f1e8ec !important;
+  background: transparent !important;
+}
+
+.production-page.admin-production-polished #productionLive .order-card .card-actions .btn {
+  flex: 0 0 auto !important;
+  min-height: 31px !important;
+  padding: 5px 10px !important;
+  white-space: nowrap !important;
+}
+
+.production-page.admin-production-polished #productionLive .order-card .production-queue-chip,
+.production-page.admin-production-polished #productionLive .order-card .card-locked-inline {
+  margin: 0 !important;
+  white-space: normal !important;
+}
+
+/* Medium widths: keep the same horizontal card but allow controls to wrap neatly. */
+@media (max-width: 1100px) {
+  .production-page.admin-production-polished #productionLive .order-card .card-actions,
+  .production-page.admin-production-polished #productionLive .order-card .card-actions.view-only {
+    max-width: 100% !important;
+  }
+}
+
+/* Phones: order information remains compact; footer stacks so nothing overflows. */
+@media (max-width: 560px) {
+  .production-page.admin-production-polished #productionLive .order-card {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto auto auto !important;
+  }
+  .production-page.admin-production-polished #productionLive .admin-order-layout {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    grid-template-columns: 54px minmax(0, 1fr) !important;
+    gap: 9px !important;
+    padding: 10px !important;
+  }
+  .production-page.admin-production-polished #productionLive .admin-order-thumb {
+    width: 54px !important;
+    height: 54px !important;
+  }
+  .production-page.admin-production-polished #productionLive .admin-order-updated {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    padding: 7px 10px 5px !important;
+    border-top: 1px solid #f1e8ec !important;
+  }
+  .production-page.admin-production-polished #productionLive .order-card .card-actions,
+  .production-page.admin-production-polished #productionLive .order-card .card-actions.view-only {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    padding: 4px 10px 10px !important;
+    border-top: 0 !important;
+  }
+  .production-page.admin-production-polished #productionLive .order-card .card-actions .btn {
+    flex: 0 1 auto !important;
+  }
+}
+
+/* ============================================================
+   Admin Production Tracker — aligned stage selector
+   Keep Pending / Ready / Out for Delivery evenly placed and
+   centered regardless of the older global/mobile tab rules.
+   ============================================================ */
+.production-page.admin-production-polished #productionLive .board-stage-toolbar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 0 14px !important;
+}
+
+.production-page.admin-production-polished #productionLive .board-stage-tabs {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  align-items: center !important;
+  width: min(100%, 560px) !important;
+  max-width: 560px !important;
+  min-width: 0 !important;
+  gap: 6px !important;
+  margin: 0 !important;
+  padding: 6px !important;
+  overflow: visible !important;
+  border: 1px solid #eadde3 !important;
+  border-radius: 16px !important;
+  background: #fffafc !important;
+  box-shadow: 0 3px 10px rgba(69, 36, 50, .04) !important;
+}
+
+.production-page.admin-production-polished #productionLive .board-stage-tabs:has(.delivery-stage-tab:not([hidden])) {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.production-page.admin-production-polished #productionLive .board-stage-tabs .stage-tab {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  min-height: 40px !important;
+  gap: 7px !important;
+  margin: 0 !important;
+  padding: 0 12px !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+}
+
+.production-page.admin-production-polished #productionLive .board-stage-tabs .stage-tab[hidden] {
+  display: none !important;
+}
+
+.production-page.admin-production-polished #productionLive .board-stage-tabs .stage-tab-dot {
+  flex: 0 0 7px !important;
+}
+
+.production-page.admin-production-polished #productionLive .board-stage-tabs .stage-tab em {
+  flex: 0 0 auto !important;
+  min-width: 22px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 2px 6px !important;
+  line-height: 1.2 !important;
+}
+
+@media (max-width: 600px) {
+  .production-page.admin-production-polished #productionLive .board-stage-tabs {
+    width: 100% !important;
+    max-width: none !important;
+    gap: 4px !important;
+    padding: 5px !important;
+    overflow: visible !important;
+  }
+
+  .production-page.admin-production-polished #productionLive .board-stage-tabs .stage-tab {
+    min-width: 0 !important;
+    min-height: 39px !important;
+    padding: 0 8px !important;
+    gap: 5px !important;
+    font-size: .74rem !important;
+  }
+
+  .production-page.admin-production-polished #productionLive .board-stage-tabs:has(.delivery-stage-tab:not([hidden])) .stage-tab {
+    padding-inline: 5px !important;
+    gap: 4px !important;
+    font-size: .69rem !important;
+  }
+
+  .production-page.admin-production-polished #productionLive .board-stage-tabs .stage-tab em {
+    min-width: 20px !important;
+    padding-inline: 5px !important;
+    font-size: .66rem !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .production-page.admin-production-polished #productionLive .board-stage-tabs:has(.delivery-stage-tab:not([hidden])) .stage-tab {
+    font-size: .64rem !important;
+    letter-spacing: -.01em !important;
+  }
+  .production-page.admin-production-polished #productionLive .board-stage-tabs:has(.delivery-stage-tab:not([hidden])) .stage-tab-dot {
+    width: 6px !important;
+    height: 6px !important;
+    flex-basis: 6px !important;
+  }
+}

@@ -1,0 +1,658 @@
+/* ============================================================
+   Production Board — live layer
+   Shared by staff/production.php and admin/production.php.
+   Loaded BEFORE the per-portal board stylesheet so those keep
+   the last word on anything they already style.
+   ============================================================ */
+
+/* ── Column owner strip (admin view labels who owns the stage) ── */
+.col-owner {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--ink-muted);
+  font-size: 0.71rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.col-owner.admin {
+  background: rgba(212, 168, 67, 0.1);
+  color: #8a6a12;
+}
+
+/* ── Customer frames: one per customer, their orders folded inside ── */
+.customer-frame {
+  flex-shrink: 0;           /* the column scrolls; frames keep their height */
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--card-accent, var(--rose));
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: 0 10px 24px rgba(28, 26, 30, 0.06);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.customer-frame:hover {
+  border-color: rgba(200, 80, 106, 0.28);
+}
+
+.customer-frame.overdue {
+  border-color: #fecaca;
+  border-left-color: #dc2626;
+  background: linear-gradient(180deg, #fff, #fff7f7);
+}
+
+.customer-frame > .frame-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 13px 14px;
+  cursor: default;
+  list-style: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.customer-frame > .frame-head::-webkit-details-marker {
+  display: none;
+}
+
+.customer-frame > .frame-head:hover .frame-name {
+  color: #a13a55;
+}
+
+.customer-frame > .frame-head:focus-visible {
+  outline: 2px solid rgba(200, 80, 106, 0.55);
+  outline-offset: -3px;
+  border-radius: 6px;
+}
+
+.frame-caret {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--ink-muted);
+  font-size: 0.8rem;
+  line-height: 1;
+  transition: transform 0.18s ease;
+}
+
+.customer-frame[open] > .frame-head .frame-caret {
+  transform: rotate(90deg);
+}
+
+.frame-info {
+  display: block;
+  min-width: 0;
+  flex: 1;
+}
+
+.frame-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.frame-name {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--ink);
+  font-size: 0.98rem;
+  font-weight: 900;
+  line-height: 1.25;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: color 0.18s ease;
+}
+
+.frame-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: 22px;
+  min-height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--card-accent, var(--rose));
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 900;
+}
+
+.frame-meta,
+.frame-contact,
+.frame-due,
+.frame-assigned {
+  display: block;
+  margin-top: 4px;
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.frame-contact {
+  color: var(--ink-light);
+  font-weight: 700;
+}
+
+.frame-due {
+  color: var(--ink-light);
+}
+
+.frame-due::before {
+  content: "Due ";
+  color: var(--ink-muted);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.frame-due.overdue {
+  color: #b91c1c;
+  font-weight: 800;
+}
+
+.frame-assigned::before {
+  content: "Assigned ";
+  color: var(--ink-muted);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/*
+ * A customer with a dozen items scrolls inside their own frame instead of
+ * stretching the column, so the stage stays readable. overscroll-behavior keeps
+ * that scroll from chaining out to the column and the page behind it.
+ */
+.frame-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: none;
+  overflow: visible;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 12px;
+  border-top: 1px dashed var(--border);
+  background: rgba(28, 26, 30, 0.015);
+}
+
+/*
+ * The cards keep their own height: a column flex container that scrolls will
+ * otherwise squash them, since .order-card hides its overflow and so has no
+ * automatic minimum size.
+ */
+.frame-body > * {
+  flex-shrink: 0;
+}
+
+.frame-batch {
+  color: var(--ink-muted);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.frame-batch:not(:first-child) {
+  margin-top: 4px;
+}
+
+/* Cards inside a frame are already framed - drop the second layer of lift. */
+.frame-body .order-card {
+  box-shadow: none;
+}
+
+.frame-body .order-card:hover {
+  transform: none;
+  box-shadow: 0 6px 16px rgba(28, 26, 30, 0.08);
+}
+
+.kanban-col.is-locked .customer-frame {
+  box-shadow: none;
+}
+
+.kanban-col.is-locked .customer-frame:hover {
+  border-color: var(--border);
+}
+
+.card-actions.view-only {
+  justify-content: space-between;
+}
+
+.card-locked-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 30px;
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #f8fafc;
+  color: var(--ink-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.lock-icon {
+  font-size: 0.78rem;
+}
+
+/* ── Live status pill ─────────────────────────────────── */
+.board-live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--ink-light);
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.board-live-pill:hover {
+  border-color: rgba(200, 80, 106, 0.4);
+}
+
+.live-pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18);
+  animation: livePulse 2.4s ease-in-out infinite;
+}
+
+.board-live-pill[data-state="syncing"] .live-pill-dot {
+  background: #d4a843;
+  box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.2);
+  animation-duration: 0.9s;
+}
+
+.board-live-pill[data-state="offline"] {
+  border-color: #fecaca;
+  background: #fff1f2;
+  color: #b91c1c;
+}
+
+.board-live-pill[data-state="offline"] .live-pill-dot {
+  background: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.18);
+}
+
+.board-live-pill[data-state="paused"] .live-pill-dot {
+  background: #9ca3af;
+  box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.2);
+  animation: none;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.35; }
+}
+
+/* ── Stage tabs: the phone view of a four-column board ── */
+.board-stage-tabs {
+  display: none;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding-bottom: 4px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.board-stage-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.stage-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex: 0 0 auto;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--ink-light);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.stage-tab-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+}
+
+.stage-tab em {
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink-muted);
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.stage-tab.is-active {
+  border-color: rgba(200, 80, 106, 0.45);
+  background: rgba(200, 80, 106, 0.08);
+  color: #a13a55;
+}
+
+.stage-tab.is-active em {
+  background: rgba(200, 80, 106, 0.16);
+  color: #a13a55;
+}
+
+/* ── Drag and drop ────────────────────────────────────── */
+.order-card[draggable="true"] {
+  cursor: grab;
+}
+
+.order-card.is-dragging {
+  opacity: 0.45;
+  cursor: grabbing;
+}
+
+.kanban-col.is-drop-target .col-body {
+  outline: 2px dashed rgba(200, 80, 106, 0.35);
+  outline-offset: -6px;
+  border-radius: 8px;
+}
+
+.kanban-col.is-drop-hover .col-body {
+  outline-style: solid;
+  outline-color: rgba(200, 80, 106, 0.65);
+  background: rgba(200, 80, 106, 0.05);
+}
+
+/* ── Card busy / just-moved feedback ──────────────────── */
+.order-card.is-busy {
+  position: relative;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.order-card.is-busy::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(200, 80, 106, 0.25);
+  border-top-color: #c8506a;
+  border-radius: 50%;
+  animation: cardSpin 0.7s linear infinite;
+}
+
+@keyframes cardSpin {
+  to { transform: rotate(360deg); }
+}
+
+.order-card.just-moved {
+  animation: justMoved 1.8s var(--ease-out, ease-out) both;
+}
+
+@keyframes justMoved {
+  0%   { box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.55); transform: translateY(-2px); }
+  60%  { box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25); transform: none; }
+  100% { box-shadow: none; }
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 900px) {
+  .board-stage-tabs {
+    display: flex;
+  }
+
+  .kanban-col.is-filtered-out {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .board-live-pill {
+    min-height: 34px;
+    font-size: 0.74rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-pill-dot,
+  .order-card.is-busy::after {
+    animation: none;
+  }
+
+  .frame-caret {
+    transition: none;
+  }
+
+  .order-card.just-moved {
+    animation: none;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.45);
+  }
+}
+
+/* Cleaner board hierarchy */
+.customer-frame {
+  border-left-width: 3px;
+  box-shadow: 0 4px 14px rgba(28, 26, 30, 0.05);
+}
+
+.customer-frame > .frame-head {
+  gap: 10px;
+  padding: 12px;
+}
+
+.frame-title {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.frame-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.frame-stats span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink-light);
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.frame-details {
+  display: grid;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.frame-contact,
+.frame-due,
+.frame-assigned {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  margin-top: 0;
+  color: var(--ink-muted);
+  font-size: 0.74rem;
+  line-height: 1.3;
+}
+
+.frame-contact::before,
+.frame-due::before,
+.frame-assigned::before {
+  flex: 0 0 auto;
+  color: var(--ink-light);
+  font-size: 0.64rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.frame-contact::before {
+  content: "Contact";
+}
+
+.frame-due::before {
+  content: "Due";
+}
+
+.frame-assigned::before {
+  content: "Assigned";
+}
+
+.frame-body {
+  gap: 8px;
+  max-height: min(360px, 42vh);
+  padding: 10px;
+}
+
+.frame-batch {
+  padding: 2px 0;
+  color: var(--ink-light);
+  font-size: 0.65rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.production-hold { margin: 10px 0; padding: 8px; background: #fff3cd; color: #714b00; border-radius: 6px; overflow-wrap: anywhere; font-size: .8rem; }
+.production-hold-editor { margin: 10px 0; font-size: .8rem; }
+.production-hold-editor summary { cursor: pointer; color: #2563eb; }
+.production-hold-editor form { display: grid; gap: 9px; padding-top: 10px; }
+.production-hold-editor label { display: block; }
+.production-hold-editor textarea { width: 100%; box-sizing: border-box; min-height: 64px; padding: 7px; border: 1px solid #cbd5e1; border-radius: 5px; resize: vertical; }
+.production-hold-editor [role=status] { overflow-wrap: anywhere; }
+
+
+/* Production board: order details are always visible for faster staff work. */
+.production-board .frame-caret,
+#productionLive .frame-caret { display: none; }
+#productionLive .customer-frame > .frame-head { cursor: default; }
+#productionLive .customer-frame > .frame-head:hover .frame-name { color: var(--ink); }
+#productionLive .frame-body { max-height: none; overflow: visible; }
+#productionLive .order-card { padding: 10px 12px; }
+#productionLive .card-actions { position: sticky; bottom: 8px; z-index: 3; background: var(--white); margin-left: -1px; margin-right: -1px; padding: 8px 0 2px; }
+#productionLive .card-actions .btn { min-height: 34px; }
+
+/* Role-locked Quality Check return action. */
+.qc-return-editor {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  margin: 8px 0 0;
+  padding: 0;
+  font-size: .75rem;
+}
+.qc-return-editor summary {
+  cursor: pointer;
+  color: var(--ink-muted, #6b7280);
+  overflow-wrap: anywhere;
+}
+.qc-return-editor form,
+.qc-return-editor label,
+.qc-return-editor textarea,
+.qc-return-editor button {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.qc-return-editor textarea {
+  width: 100%;
+  min-height: 70px;
+  resize: vertical;
+  padding: 8px;
+  border: 1px solid var(--border, #d1d5db);
+  border-radius: 6px;
+  font: inherit;
+}
+
+
+
+/* Order received time: useful for visually confirming the newest-first queue. */
+#productionLive .card-created {
+  margin-top: 4px;
+  color: var(--ink-muted, #6b7280);
+  font-size: .76rem;
+  font-weight: 650;
+}
+
+/* ── Production board: group work by order date ─────────────────────── */
+.production-date-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.production-date-group + .production-date-group {
+  margin-top: 6px;
+}
+
+.production-date-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--ink-muted, #6b7280);
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: .01em;
+  padding: 4px 2px 2px;
+}
+
+.production-date-heading::after {
+  content: '';
+  flex: 1 1 auto;
+  min-width: 16px;
+  height: 1px;
+  background: var(--border, #e5e7eb);
+}
+
+.production-date-orders {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+@media (max-width: 600px) {
+  .production-date-heading {
+    font-size: .78rem;
+    padding-top: 6px;
+  }
+}

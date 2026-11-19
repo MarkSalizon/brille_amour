@@ -1,0 +1,327 @@
+/* Brille Amour customer catalog — uniform, medium-sized product cards.
+   Limited to the Shop grid and the Home featured-products grid. */
+
+/* Shop grid: four balanced cards on wide screens, with consistent row heights. */
+.customer-shop-main .portal-shop-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: auto;
+  align-items: stretch;
+  gap: 15px;
+}
+.customer-shop-main .portal-shop-grid > .portal-shop-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  padding: 11px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+.customer-shop-main .portal-shop-card-media {
+  flex: 0 0 165px;
+  width: 100%;
+  height: 165px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff5f7;
+}
+.customer-shop-main .portal-shop-card-media > .catalog-product-preview,
+.customer-shop-main .portal-shop-card-media > .product-sample-image,
+.customer-shop-main .portal-shop-card-media > .portal-product-fallback {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  aspect-ratio: auto;
+  border-radius: inherit;
+}
+.customer-shop-main .portal-shop-card-media > .catalog-product-preview {
+  object-fit: cover; /* Fill the whole frame (no side bands); product mockups are centered. */
+  object-position: center 45%;
+}
+.customer-shop-main .portal-shop-card-media > .portal-product-fallback {
+  display: grid;
+  place-items: center;
+}
+.customer-shop-main .portal-shop-card-body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-width: 0;
+  gap: 7px;
+  padding: 12px 3px 3px;
+}
+.customer-shop-main .portal-shop-card .product-category {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.customer-shop-main .portal-shop-card h2 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  min-height: 2.7em;
+  font-size: 1.02rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+/* Compact one-line product caption; do not truncate stock/unavailable explanations. */
+.customer-shop-main .portal-shop-card-body > .shop-product-caption {
+  display: block;
+  min-width: 0;
+  min-height: 1.45em;
+  max-height: 1.45em;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: .79rem;
+  line-height: 1.45;
+}
+.customer-shop-main .portal-product-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  min-width: 0;
+  margin-top: auto;
+  padding-top: 10px;
+}
+.customer-shop-main .portal-product-meta strong {
+  min-width: 0;
+  font-size: .94rem;
+  overflow-wrap: anywhere;
+}
+.customer-shop-main .portal-product-meta .portal-stock {
+  font-size: .68rem;
+}
+.customer-shop-main .portal-buy-actions {
+  flex: 0 0 auto;
+  min-width: 0;
+  margin-top: 9px;
+}
+
+/* Shop card row alignment: cards in the same grid row share the tallest height.
+   The body fills that height so price/status/actions stay aligned at the bottom. */
+.customer-shop-main .portal-shop-grid > .portal-shop-card {
+  align-self: stretch;
+}
+.customer-shop-main .portal-shop-card-body {
+  height: 100%;
+}
+
+/* Home featured products: one uniform thumbnail size and aligned labels/prices. */
+.portal-featured-grid {
+  grid-auto-rows: 1fr;
+  align-items: stretch;
+}
+.portal-featured-grid > .portal-product-mini {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  gap: 9px;
+  padding: 12px;
+}
+.portal-featured-grid > .portal-product-mini > :is(.catalog-product-preview, .product-sample-image, .portal-product-fallback) {
+  display: block;
+  flex: 0 0 150px;
+  width: 100%;
+  height: 150px;
+  min-height: 0;
+  max-height: 150px;
+  aspect-ratio: auto;
+  border-radius: 12px;
+  background-color: #fff5f7;
+}
+.portal-featured-grid > .portal-product-mini > .catalog-product-preview {
+  object-fit: cover;
+  object-position: center 45%;
+}
+.portal-featured-grid > .portal-product-mini > .portal-product-fallback {
+  display: grid;
+  place-items: center;
+}
+.portal-featured-grid > .portal-product-mini > span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.portal-featured-grid > .portal-product-mini > h3 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  min-height: 2.7em;
+  margin: 0;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.portal-featured-grid > .portal-product-mini > strong {
+  margin-top: auto;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1060px) {
+  .customer-shop-main .portal-shop-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .customer-shop-main .portal-shop-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .customer-shop-main .portal-shop-card-media {
+    flex-basis: 148px;
+    height: 148px;
+  }
+}
+@media (max-width: 480px) {
+  .customer-shop-main .portal-shop-grid {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+  }
+  .customer-shop-main .portal-shop-grid > .portal-shop-card {
+    width: 100%;
+    max-width: 360px;
+  }
+  .customer-shop-main .portal-shop-card-media {
+    flex-basis: 175px;
+    height: 175px;
+  }
+  .portal-featured-grid {
+    justify-items: center;
+  }
+  .portal-featured-grid > .portal-product-mini {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+/* Shop category/search filtering uses the HTML hidden attribute.
+   The uniform-card display:flex rule above must not override it. */
+.customer-shop-main #shopProductGrid > .portal-shop-card[hidden],
+.customer-shop-main #shopEmpty[hidden] {
+  display: none !important;
+}
+
+/* Stock-aware Buy state: keep the original card dimensions and cart animation. */
+.customer-shop-main .portal-buy-button:disabled {
+  opacity: .78;
+  cursor: not-allowed;
+  background: #e9e2e6;
+  color: #73646d;
+  border-color: #e9e2e6;
+  box-shadow: none;
+  pointer-events: none;
+}
+.customer-shop-main .portal-product-unavailable:not([hidden]) {
+  display: block;
+  margin: 2px 0 0;
+  min-height: 0;
+  padding: 7px 9px;
+  border: 1px solid #f0d8db;
+  border-radius: 8px;
+  background: #fff6f7;
+  color: #a13d52;
+  font-size: .72rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.customer-shop-main .portal-product-unavailable[hidden] { display: none !important; }
+
+
+/* Shop card action cleanup: compact cards, visible cart icon, reliable controls. */
+.customer-shop-main .portal-buy-actions {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  margin-top: 9px;
+}
+.customer-shop-main .portal-buy-actions.portal-preorder-actions {
+  grid-template-columns: minmax(0, 1fr);
+}
+.customer-shop-main .portal-cart-icon-button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 1px solid #eccdd8;
+  border-radius: 11px;
+  background: #fff7fa;
+  color: #b72f5b;
+}
+.customer-shop-main .portal-cart-icon-button:hover,
+.customer-shop-main .portal-cart-icon-button:focus-visible {
+  border-color: #d989a4;
+  background: #ffedf3;
+  color: #9f214c;
+}
+.customer-shop-main .portal-cart-icon-button svg {
+  display: block !important;
+  width: 22px !important;
+  height: 22px !important;
+  max-width: none !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 2.15 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  pointer-events: none;
+}
+.customer-shop-main .portal-buy-actions .portal-buy-button {
+  min-width: 0;
+  min-height: 44px;
+  margin: 0;
+}
+.customer-shop-main .portal-shop-card-body > .shop-size-picker {
+  margin-top: 1px;
+}
+
+
+/* Equal shop-card alignment on desktop and mobile.
+   Reserve a consistent size-picker area so cards with and without size/package options stay level. */
+.customer-shop-main .portal-shop-card-body > .shop-card-size-slot {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  min-height: 66px;
+  margin-top: 1px;
+}
+.customer-shop-main .portal-shop-card-body > .shop-card-size-slot.is-empty {
+  align-items: stretch;
+}
+.customer-shop-main .portal-shop-card-body > .shop-card-size-slot .shop-size-picker {
+  width: 100%;
+  margin: 0;
+}
+.customer-shop-main .portal-shop-card-body > .shop-card-size-slot .shop-size-picker-placeholder {
+  width: 100%;
+  min-height: 66px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+}
+.customer-shop-main .portal-shop-card-body > .portal-product-meta {
+  margin-top: 0;
+}
+.customer-shop-main .portal-shop-card-body > .shop-size-picker {
+  margin-top: 0;
+}
+@media (max-width: 760px) {
+  .customer-shop-main .portal-shop-card-body > .shop-card-size-slot,
+  .customer-shop-main .portal-shop-card-body > .shop-card-size-slot .shop-size-picker-placeholder {
+    min-height: 62px;
+  }
+}

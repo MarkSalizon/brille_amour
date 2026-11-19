@@ -1,0 +1,1 @@
+add product management and inventory module
